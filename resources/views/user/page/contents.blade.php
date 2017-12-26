@@ -4,6 +4,7 @@
   @include('user.layouts.slider')
   @include('user.layouts.pays_step')
       <!--slider-->
+
   <div class="container">
     <div id="content" class="space-top-none">
       <div class="main-content">
