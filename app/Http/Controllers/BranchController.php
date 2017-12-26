@@ -57,7 +57,7 @@ class BranchController extends Controller
     public function updateBranch(CreateRequest $request,Branch $branch)
     {
       $data = $request->all();
-      if ($request->hasFile('image')  )
+      if ($request->hasFile('image'))
       {
           $file = $request->file('image');
           $filename = $file->getClientOriginalName();
@@ -68,7 +68,7 @@ class BranchController extends Controller
           $branch->update($data);
       } else {
           $request->image=$request->branchimage;
-          $product->update($data);
+          $branch->update($data);
       }
       return redirect('/admin/branch/list_branch')->withSuccess('Success !! Complete Update Branch');
     }
