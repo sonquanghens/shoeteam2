@@ -16,6 +16,7 @@ Route::get('/products/{product}', 'ProductController@showProduct');
 Route::get('/products/branch/{name}', 'BranchController@getBranch');
 Route::get('/pricesearch', 'ProductController@PriceSearch');
 
+
 Route::group(['prefix'=>'admin'],function(){
   // index admin
 Route::get('/', function() {
@@ -42,6 +43,31 @@ Route::get('/', function() {
 // });
 
 // })->middleware('checkadmin');
+
+
+
+Route::get('/', function () {
+    return view('user.page.contents');
+
+Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
+ Route::get('add', 'BranchController@getBranch');
+ Route::post('add', 'BranchController@saveBranch');
+ /// product
+ Route::get('/product','ProductController@allProduct');
+ Route::get('/product/delete/{id}','ProductController@delete');
+ Route::get('/product/create','ProductController@create');
+ Route::post('/product/add','ProductController@addProduct');
+
+});
+Route::get('/admin', function() {
+    return view('admin.contents.content');
+})->middleware('checkadmin');
+// Route::get('/login',function(){
+//   return view('user.login');
+// });
+// Route::get('/register',function(){
+//   return view('user.register');
+// });
 
 Auth::routes();
 
