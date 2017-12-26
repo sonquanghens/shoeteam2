@@ -21,8 +21,8 @@ Route::group(['prefix'=>'admin'],function(){
  Route::post('/branch', 'BranchController@saveBranch');
  Route::get('/branch/list_branch', 'BranchController@Branch');
  Route::get('/branch/{branch}/edit', 'BranchController@editBranch');
+ Route::put('branch/{branch}', 'BranchController@updateBranch');
  Route::get('/branch/{branch}/delete', 'BranchController@deleteBranch');
- Route::put('branch/{branch}', 'BranchController@deleteBranch');
  Route::get('/users', 'UserController@index');
  Route::get('/search/price', 'UserController@store');
 

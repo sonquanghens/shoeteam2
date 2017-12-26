@@ -22,20 +22,11 @@
                        <a href="{{ url('/admin/branch/list_branch') }}"><i class="fa fa-venus "></i>Branch </a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-cube fa-fw"></i>Product <span class="fa arrow"></span></a>
-               <ul class="nav nav-second-level">
-                  <li>
-                      <a href="#"><i class="fa fa-plus-square"></i>Second  Link</a>
-                  </li>
-                   <li>
-                      <a href="#"><i class="fa fa-list-ul"></i>Second Link</a>
-                  </li>
-               </ul>
-
+              <a href="#"><i class="fa fa-cube fa-fw"></i>Product</a>
             </li>
 
             <li>
-                <a href="{{ url('/admin/users') }}"><i class="fa fa-users fa-fw"></i>Users <span class="fa arrow"></span></a>
+                <a href="{{ url('/admin/users') }}"><i class="fa fa-users fa-fw"></i>Users </a>
                  <!-- <ul class="nav nav-second-level">
                     <li>
                         <a href="#"><i class="fa fa-plus-square"></i>Second  Link</a>
