@@ -78,5 +78,4 @@ class BranchController extends Controller
       $branch->delete();
       return redirect('/admin/branch/list_branch')->withSuccess('Success !! Complete Delete Branch');
     }
-
 }
