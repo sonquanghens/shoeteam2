@@ -26,7 +26,7 @@ class CreateRequest extends FormRequest
         return [
           'name' => 'required|min:3 ',
           'description' => ' required' ,
-          'image' => 'required|image'
+          'image' => 'mimes:jpeg,bmp,png'
 
         ];
     }
