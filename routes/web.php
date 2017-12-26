@@ -30,7 +30,6 @@ Route::get('/', function() {
  Route::get('/users', 'UserController@index');
  Route::get('/search/price', 'UserController@store');
 
-
 });
 
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
@@ -41,12 +40,6 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  Route::post('/product/add','ProductController@addProduct');
 });
 
-// Route::get('/login',function(){
-//   return view('user.login');
-// });
-// Route::get('/register',function(){
-//   return view('user.register');
-// });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
