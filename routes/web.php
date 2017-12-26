@@ -25,8 +25,6 @@ Route::group(['prefix'=>'admin'],function(){
  Route::get('/branch/{branch}/delete', 'BranchController@deleteBranch');
  Route::get('/users', 'UserController@index');
  Route::get('/search/price', 'UserController@store');
-
-
 });
 
 
