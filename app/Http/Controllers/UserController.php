@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('auth.admin.user.users');
     }
 
     /**
@@ -34,7 +34,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //   $price = $request->Input('sl2');
+    //   $vitri = strpos($price, ',');
+    // //  dd($price);
+    //   $price_min = substr($price, 0, $vitri) * 1000000;
+    //   dd($price_min);
+    //   $price_max = substr($price, $vitri+1) * 1000000;
     }
 
     /**

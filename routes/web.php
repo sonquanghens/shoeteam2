@@ -13,6 +13,8 @@
 Route::get('/', 'ProductController@home');
 Route::get('/search', 'ProductController@getSearch');
 Route::get('/products/{product}', 'ProductController@showProduct');
+Route::get('/products/branch/{name}', 'BranchController@getBranch');
+Route::get('/pricesearch', 'ProductController@PriceSearch');
 
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  Route::get('add', 'BranchController@getBranch');

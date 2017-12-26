@@ -24,7 +24,10 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'name' => 'required|min:3 ',
+          'description' => ' required' ,
+          'image' => 'required|image'
+
         ];
     }
 }
