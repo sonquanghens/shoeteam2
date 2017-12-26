@@ -25,6 +25,7 @@ class ProductController extends Controller
                              ->paginate(25);
        }
          $branch = Branch::all();
+      
          return view('user.page.search',compact('products','branch'));
      }
 
@@ -51,17 +52,17 @@ class ProductController extends Controller
                return view('user.page.search',compact('products','branch'));
                break;
            case 3:
-               $products=Product::where('unit_price','>',150)->where('unit_price','<=',300);
+               $products=Product::where('unit_price','>',1000000)->where('unit_price','<=',1400000)->paginate(15);
                $branch = Branch::all();
                return view('user.page.search',compact('products','branch'));
                break;
            case 4:
-               $products=Product::where('unit_price','>',300)->where('unit_price','<=',500);
+               $products=Product::where('unit_price','>',300)->where('unit_price','<=',500)->paginate(15);
                $branch = Branch::all();
                return view('user.page.search',compact('products','branch'));
                break;
            case 5:
-               $products=Product::where('unit_price','>=',500);
+               $products=Product::where('unit_price','>=',500)->paginate(15);
                $branch = Branch::all();
                return view('user.page.search',compact('products','branch'));
                break;

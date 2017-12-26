@@ -20,13 +20,12 @@
             <div class="form-group">
               <div class="col-md-12" style="margin-bottom: 15px;">
                 <p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> SIZE GIÀY</p>
-
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-md-12" style="margin-bottom: 15px;">
-                <p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> GIÁ</p>
+                p<p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> GIÁ</p>
                 <select name="pricesearch" form="pricesearch" class="form-control">
                               <option value="1"><i></i>30.000 - 150.000</option>
                               <option value="2"><i></i>150.000 - 400.000</option>
@@ -37,7 +36,7 @@
                           </select>
                           <br>
                           <form id="pricesearch" class="pull-left" action="{{url('/pricesearch')}}" method="get">
-                              <input type="submit" class="btn btn-primary" value="Search by price">
+                              <input type="submit" class="btn btn-primary"  value="Search by price">
                           </form>
               </div>
             </div>
@@ -54,6 +53,9 @@
                   @foreach($products as $value)
                     <div class="col-sm-3" >
                       <div class="single-item">
+                        @if($value->promotion_price > 0)
+                        <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
+                        @endif
                         <div class="single-item-header">
                           <a href="{{ url('/products/').'/'.$value->id }}"><img src="/img/all1).jpg" alt=""></a>
                         </div>
@@ -85,5 +87,20 @@
 @stop
 
 @section('script')
-
+<script>
+    $(function(){
+      $('#searchsubmit').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+           dataType: "json",
+           url: '/search',
+           data: {keyword: $('#key').value()},
+           success: function (result) {
+               // update your page with the result json
+               console.log(result);
+           },
+        });
+      });
+    });
+</script>
 @stop
