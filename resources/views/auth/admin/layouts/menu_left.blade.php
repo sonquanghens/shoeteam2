@@ -8,26 +8,19 @@
 
             </li>
              <li>
-                <a  href="#"> <strong> Romelia Alexendra </strong></a>
+                <a  href="#"><i class="fa fa-users fa-fw"></i> <strong>{{ Auth::user()->name }}</strong></a>
             </li>
 
             <li>
-                <a   href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                <a  href="#"><i class="fa fa-dashboard "></i>Dashboard</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Category <span class="fa arrow"></span></a>
-              </li>
+                <a href="{{ url('/admin/products') }}"><i class="fa fa-cube fa-fw"></i>Products</a>
+            </li>
             </li>
             <li>
-
-              <a href="#"><i class="fa fa-cube fa-fw"></i>Product</a>
-
-              <a href="/admin/product"><i class="fa fa-cube fa-fw"></i>Product</a>
-
-
-
+                 <a href="{{ url('/admin/branch/list_branch') }}"><i class="fa fa-venus "></i>Branch </a>
             </li>
-
             <li>
                 <a href="{{ url('/admin/users') }}"><i class="fa fa-users fa-fw"></i>Users </a>
                  <!-- <ul class="nav nav-second-level">
