@@ -23,11 +23,6 @@ Route::get('/', function() {
       return view('auth.admin.user.users');
   });
 
-Route::group(['prefix'=>'admin'],function(){
-  // index admin
-Route::get('/', function() {
-  return view('auth.admin.branch.branch_list');
- });      
   // Branch
 
  Route::get('/branch/create', 'BranchController@CreateBranch');
@@ -41,15 +36,6 @@ Route::get('/', function() {
  Route::get('/search/price', 'UserController@store');
  });
 
-//  Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
-//  /// product
-//  Route::get('/product','ProductController@allProduct');
-//  Route::get('/product/delete/{id}','ProductController@delete');
-//  Route::get('/product/create','ProductController@create');
-//  Route::post('/product/add','ProductController@addProduct');
-// });
-
-// })->middleware('checkadmin');
 
 
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
@@ -60,12 +46,6 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  Route::post('/product/add','ProductController@addProduct');
 });
 
-// Route::get('/login',function(){
-//   return view('user.login');
-// });
-// Route::get('/register',function(){
-//   return view('user.register');
-// });
 
 Auth::routes();
 
