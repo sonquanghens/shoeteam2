@@ -30,13 +30,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 });
 
-
-Route::get('/', function () {
-    return view('user.page.contents');
-
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
- Route::get('add', 'BranchController@getBranch');
- Route::post('add', 'BranchController@saveBranch');
  /// product
  Route::get('/product','ProductController@allProduct');
  Route::get('/product/delete/{id}','ProductController@delete');
