@@ -43,7 +43,6 @@ class ProductController extends Controller
                $branch = Branch::all();
                 //dd($product);
                return view('user.page.search',compact('products','branch'));
-
                break;
            case 2:
                $products=Product::where('unit_price','>',400000)->where('unit_price','<=',1000000)->paginate(15);
