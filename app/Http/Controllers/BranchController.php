@@ -12,7 +12,7 @@ class BranchController extends Controller
 {
     public function CreateBranch()
     {
-       return view('admin.contents.content');
+       return view('auth.admin.branch.create_branch');
     }
 
     public function saveBranch(CreateRequest $request)
@@ -26,12 +26,12 @@ class BranchController extends Controller
            $destinationPath = public_path('/uploads');
            $file->move($destinationPath, $images);
            $data['image'] = $images;
-           $product = Branch::create($data);
+           $branchs = Branch::create($data);
        } else {
          $data['image'] = '';
-         $product = Branch::create($data);
+         $branchs = Branch::create($data);
        }
-         return view('admin.contents.content');
+         return redirect('/admin/branch/list_branch')->withSuccess('Success !! Complete Create Branch');
     }
 
     public function getBranch($name)
@@ -45,7 +45,38 @@ class BranchController extends Controller
     }
 
     public function Branch(){
-      return view('admin.contents.branch');
+      $branchs = Branch::all();
+      return view('auth.admin.branch.branch_list',compact('branchs'));
+    }
+
+    public function editBranch(Branch $branch)
+    {
+      return view('auth.admin.branch.edit_branch',compact('branch'));
+    }
+
+    public function updateBranch(CreateRequest $request,Branch $branch)
+    {
+      $data = $request->all();
+      if ($request->hasFile('image')  )
+      {
+          $file = $request->file('image');
+          $filename = $file->getClientOriginalName();
+          $images = time(). "_" . $filename;
+          $destinationPath = public_path('/uploads');
+          $file->move($destinationPath, $images);
+          $data['image'] = $images;
+          $branch->update($data);
+      } else {
+          $request->image=$request->branchimage;
+          $product->update($data);
+      }
+      return redirect('/admin/branch/list_branch')->withSuccess('Success !! Complete Update Branch');
+    }
+
+    public function deleteBranch(Branch $branch)
+    {
+      $branch->delete();
+      return redirect('/admin/branch/list_branch')->withSuccess('Success !! Complete Delete Branch');
     }
 
 }
