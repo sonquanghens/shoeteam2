@@ -12,17 +12,20 @@
             </li>
 
             <li>
-                <a  href="#"><i class="fa fa-dashboard "></i>Dashboard</a>
+                <a   href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
             </li>
             <li>
-                <a href="{{ url('/admin/products') }}"><i class="fa fa-cube fa-fw"></i>Products</a>
-            </li>
-            </li>
-            <li>
-                       <a href="{{ url('/admin/branch/list_branch') }}"><i class="fa fa-venus "></i>Branch </a>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Category <span class="fa arrow"></span></a>
+              </li>
             </li>
             <li>
+
               <a href="#"><i class="fa fa-cube fa-fw"></i>Product</a>
+
+              <a href="/admin/product"><i class="fa fa-cube fa-fw"></i>Product</a>
+
+
+
             </li>
 
             <li>

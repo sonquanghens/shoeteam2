@@ -8,8 +8,11 @@
       </div>
       <div class="row">
           <div class="col-md-12">
-                {!! Form::open(['url' => '/admin/branch','files' => true]) !!}
-                   @include('auth.admin.pratials.forms.branch')
+
+              <div class="alert alert-info">
+                {!! Form::open(['url' => '/add','files' => true ]) !!}
+                   @include('admin.pratials.forms.branch')
+
                {!! Form::close() !!}
           </div>
       </div>
