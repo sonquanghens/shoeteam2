@@ -8,10 +8,11 @@
         @else
         <li><a href="/home"><i class="fa fa-user"></i>{{Auth::user()->name}}</a></li>
         <li><a href="{{route('logout')}}" onclick="event.preventDefault();
-          document.getElementById('logout-form').submit();">Logout</a></li>
+          document.getElementById('logout-form').submit();"                  >Đăng xuất</a></li>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
           </form>
+          <li><a href="/admin">Quản lý</a></li>
         @endif
       </ul>
     </div>

@@ -14,27 +14,24 @@ Route::get('/', 'ProductController@home');
 Route::get('/search', 'ProductController@getSearch');
 Route::get('/products/{product}', 'ProductController@showProduct');
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  Route::get('add', 'BranchController@getBranch');
  Route::post('add', 'BranchController@saveBranch');
-});
-
-
-Route::get('/', function () {
-    return view('user.page.contents');
+ /// product
+ Route::get('/product','ProductController@allProduct');
+ Route::get('/product/delete/{id}','ProductController@delete');
+ Route::get('/product/create','ProductController@create');
+ Route::post('/product/add','ProductController@addProduct');
 });
 Route::get('/admin', function() {
     return view('admin.contents.content');
-});
+})->middleware('checkadmin');
 // Route::get('/login',function(){
 //   return view('user.login');
 // });
 // Route::get('/register',function(){
 //   return view('user.register');
 // });
-Route::get('/tao', function(){
-  return view('user');
-});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

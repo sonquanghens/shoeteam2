@@ -14,32 +14,16 @@
             </li>
 
             <li>
-                <a class="active-menu"  href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                <a   href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Category <span class="fa arrow"></span></a>
-                 <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#"><i class="fa fa-plus-square"></i>Second  Link</a>
-                    </li>
-                     <li>
-                        <a href="#"><i class="fa fa-list-ul"></i>Second Link</a>
-                    </li>
-                 </ul>
-
               </li>
             </li>
 
             <li>
-              <a href="#"><i class="fa fa-cube fa-fw"></i>Product <span class="fa arrow"></span></a>
-               <ul class="nav nav-second-level">
-                  <li>
-                      <a href="#"><i class="fa fa-plus-square"></i>Second  Link</a>
-                  </li>
-                   <li>
-                      <a href="#"><i class="fa fa-list-ul"></i>Second Link</a>
-                  </li>
-               </ul>
+              <a href="/admin/product"><i class="fa fa-cube fa-fw"></i>Product</a>
+
 
             </li>
 

@@ -9,8 +9,8 @@
       <div class="row">
           <div class="col-md-12">
               <div class="alert alert-info">
-                {!! Form::open(['url' => '/add','files' => true]) !!}
-                   @include('admin.partials.forms.branch')
+                {!! Form::open(['url' => '/add','files' => true ]) !!}
+                   @include('admin.pratials.forms.branch')
                {!! Form::close() !!}
               </div>
           </div>
