@@ -67,12 +67,15 @@ class ProductController extends Controller
                break;
        }
    }
+
    public function allProduct()
    {
      // dd(Product::all());
      $products = Product::all();
      return view('admin.contents.product',compact('products'));
    }
+
+
 
 
 
