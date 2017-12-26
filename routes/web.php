@@ -13,10 +13,15 @@
 Route::get('/', 'ProductController@home');
 Route::get('/search', 'ProductController@getSearch');
 Route::get('/products/{product}', 'ProductController@showProduct');
+Route::get('/products/branch/{name}', 'BranchController@getBranch');
+Route::get('/pricesearch', 'ProductController@PriceSearch');
 
 Route::group(['prefix'=>'admin'],function(){
- Route::get('add', 'BranchController@getBranch');
- Route::post('add', 'BranchController@saveBranch');
+ Route::get('/addbranch', 'BranchController@CreateBranch');
+ Route::post('/add', 'BranchController@saveBranch');
+ Route::get('/branch', 'BranchController@Branch');
+
+
 });
 
 
@@ -26,12 +31,6 @@ Route::get('/', function () {
 Route::get('/admin', function() {
     return view('admin.contents.content');
 });
-// Route::get('/login',function(){
-//   return view('user.login');
-// });
-// Route::get('/register',function(){
-//   return view('user.register');
-// });
 Route::get('/tao', function(){
   return view('user');
 });

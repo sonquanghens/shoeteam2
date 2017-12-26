@@ -4,7 +4,7 @@
     <div class="visible-xs clearfix"></div>
     <nav class="main-menu" style="margin-top: 30px;float: left;">
       <ul class="l-inline ov">
-        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="{{ url('/') }}">Trang chủ</a></li>
         <li><a href="#">Sản phẩm</a>
           <ul class="sub-menu">
             <li><a href="product_type.html">Sản phẩm 1</a></li>
@@ -12,7 +12,7 @@
             <li><a href="product_type.html">Sản phẩm 4</a></li>
           </ul>
         </li>
-        <li><a href="about.html">Giới thiệu</a></li>
+        <li><a href="{{ url('/search') }}">Giới thiệu</a></li>
         <li><a href="contacts.html">Liên hệ</a></li>
       </ul>
       <div class="clearfix"></div>
@@ -24,7 +24,7 @@
 
           <div class="cart-item">
             <div class="media">
-              <a class="pull-left" href="#"><img src="assets/dest/images/products/cart/3.png" alt=""></a>
+              <a class="pull-left" href="#"><img src="#" alt=""></a>
               <div class="media-body">
                 <span class="cart-item-title">Sample Woman Top</span>
                 <span class="cart-item-options">Size: XS; Colar: Navy</span>

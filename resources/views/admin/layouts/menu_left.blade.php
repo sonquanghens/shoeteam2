@@ -3,9 +3,7 @@
         <ul class="nav" id="main-menu">
             <li>
                 <div class="user-img-div">
-                    <img src="img/shoes_nike.jpg" class="img-circle" />
-
-
+                    <img src="/img/shoes_nike.jpg" class="img-circle" />
                 </div>
 
             </li>
@@ -14,21 +12,16 @@
             </li>
 
             <li>
-                <a class="active-menu"  href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                <a  href="{{ url('/admin/branch') }}"><i class="fa fa-dashboard "></i>Dashboard</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Category <span class="fa arrow"></span></a>
-                 <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#"><i class="fa fa-plus-square"></i>Second  Link</a>
-                    </li>
-                     <li>
-                        <a href="#"><i class="fa fa-list-ul"></i>Second Link</a>
-                    </li>
-                 </ul>
-
-              </li>
+                <a href="{{ url('/admin/addbranch') }}"><i class="fa fa-cube fa-fw"></i>Products</a>
             </li>
+            </li>
+            <li>
+                       <a href="ui.html"><i class="fa fa-venus "></i>UI Elements </a>
+
+                   </li>
 
             <li>
               <a href="#"><i class="fa fa-cube fa-fw"></i>Product <span class="fa arrow"></span></a>
