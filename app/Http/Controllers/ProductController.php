@@ -25,7 +25,7 @@ class ProductController extends Controller
                              ->paginate(25);
        }
          $branch = Branch::all();
-      
+
          return view('user.page.search',compact('products','branch'));
      }
 
