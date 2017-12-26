@@ -68,12 +68,17 @@ class ProductController extends Controller
        }
    }
 
- public function allProduct()
- {
-   // dd(Product::all());
-   $products = Product::all();
-   return view('admin.contents.product',compact('products'));
- }
+   public function allProduct()
+   {
+     // dd(Product::all());
+     $products = Product::all();
+     return view('admin.contents.product',compact('products'));
+   }
+
+
+
+
+
 
  public function delete($id)
  {
