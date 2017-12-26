@@ -1,5 +1,8 @@
 @extends('admin.layouts.admin_master')
 @section('content')
+<div class="">
+
+</div>
 {!!Form::open(['url'=>'admin/product/add', 'files' => true])!!}
 
   {!!Form::label('name','name') !!}
