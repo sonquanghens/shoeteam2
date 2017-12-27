@@ -14,7 +14,6 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="search_user" placeholder="Search" id="search_user">
                   </div>
-
                 </form>
             </div>
       </div>
