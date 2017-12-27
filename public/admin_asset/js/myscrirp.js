@@ -29,11 +29,7 @@ $(function() {
                responsive: false;
        });
    });
-
-
-
-
-
+	 
 $('#search').on('keyup',function(){
 		$value=$(this).val();
 		$.ajax({
@@ -65,4 +61,3 @@ $('#search_user').on('keyup',function(){
 		 }
 		 return false;
 	 }
-

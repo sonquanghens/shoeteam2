@@ -39,9 +39,6 @@ Route::get('/', function() {
  Route::get('/users', 'UserController@index');
  Route::get('/users/search', 'UserController@searchUser');
  Route::get('/search/price', 'UserController@store');
- });
-
-
 });
 
 
