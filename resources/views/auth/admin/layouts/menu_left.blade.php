@@ -15,7 +15,7 @@
                 <a  href="#"><i class="fa fa-dashboard "></i>Dashboard</a>
             </li>
             <li>
-                <a href="{{ url('/admin/products') }}"><i class="fa fa-cube fa-fw"></i>Products</a>
+                <a href="{{ url('/admin/product') }}"><i class="fa fa-cube fa-fw"></i>Products</a>
             </li>
             </li>
             <li>

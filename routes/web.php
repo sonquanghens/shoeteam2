@@ -17,30 +17,49 @@ Route::get('/products/branch/{name}', 'BranchController@getBranch');
 Route::get('/pricesearch', 'ProductController@PriceSearch');
 
 
+
 Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
 Route::get('/', function() {
       return redirect('admin/users');
   });
+
+  // Branch
+
  Route::get('/branch/create', 'BranchController@CreateBranch');
  Route::post('/branch', 'BranchController@saveBranch');
  Route::get('/branch/list_branch', 'BranchController@Branch');
  Route::get('/branch/{branch}/edit', 'BranchController@editBranch');
  Route::put('branch/{branch}', 'BranchController@updateBranch');
  Route::get('/branch/{branch}/delete', 'BranchController@deleteBranch');
+
  Route::get('/search','BranchController@search');
+
+ // end Branch
+
  Route::get('/users', 'UserController@index');
  Route::get('/users/search', 'UserController@searchUser');
  Route::get('/search/price', 'UserController@store');
+ });
+
 
 });
+
+
+
 
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  /// product
  Route::get('/product','ProductController@allProduct');
- Route::get('/product/delete/{id}','ProductController@delete');
+ Route::get('/product/{id}/delete','ProductController@delete');
+ Route::get('/product/{id}/edit','ProductController@editProduct');
  Route::get('/product/create','ProductController@create');
  Route::post('/product/add','ProductController@addProduct');
+ Route::put('product/{product}','ProductController@updateProduct');
 });
+
+
+
+
 
 Auth::routes();
 

@@ -2,6 +2,7 @@ $(function() {
 			// this will get the full URL at the address bar
 			var url = window.location.href;
 
+
 			// passes on every "a" tag
 			$("#main-menu a").each(function() {
 					// checks if its the same on the address bar
@@ -22,6 +23,14 @@ $(function() {
 		}
 		return false;
 	}
+
+	$(document).ready(function() {
+       $('#dataTables-example').DataTable({
+               responsive: false;
+       });
+   });
+
+
 
 
 
@@ -49,3 +58,11 @@ $('#search_user').on('keyup',function(){
 		}
 		});
 });
+
+	 function xacnhan(msg) {
+		 if (window.confirm(msg)) {
+			 return true;
+		 }
+		 return false;
+	 }
+
