@@ -1,7 +1,7 @@
 
 	$(document).ready(function() {
        $('#dataTables-example').DataTable({
-               responsive: true
+               responsive: false;
        });
    });
 
@@ -13,5 +13,3 @@
 		 }
 		 return false;
 	 }
-
-	
