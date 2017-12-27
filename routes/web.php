@@ -19,7 +19,7 @@ Route::get('/pricesearch', 'ProductController@PriceSearch');
 
 Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
 Route::get('/', function() {
-      return view('auth.admin.user.users');
+      return redirect('admin/users');
   });
  Route::get('/branch/create', 'BranchController@CreateBranch');
  Route::post('/branch', 'BranchController@saveBranch');
@@ -27,7 +27,9 @@ Route::get('/', function() {
  Route::get('/branch/{branch}/edit', 'BranchController@editBranch');
  Route::put('branch/{branch}', 'BranchController@updateBranch');
  Route::get('/branch/{branch}/delete', 'BranchController@deleteBranch');
+ Route::get('/search','BranchController@search');
  Route::get('/users', 'UserController@index');
+ Route::get('/users/search', 'UserController@searchUser');
  Route::get('/search/price', 'UserController@store');
 
 });

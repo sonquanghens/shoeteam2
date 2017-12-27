@@ -28,7 +28,7 @@
       <div class="space10">&nbsp;</div>
       <div class="beta-comp">
         <form role="search" method="get" id="searchform" action="{{ url('/search') }}">
-              <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." />
+              <input type="text" value="{{ isset($_GET['key']) ? $_GET['key'] : '' }}" name="key" id="s" placeholder="Nhập từ khóa..." />
               <button  type="submit" id="searchsubmit" class="fa fa-search"></button>
         </form>
       </div>

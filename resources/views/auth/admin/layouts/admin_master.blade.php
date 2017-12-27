@@ -69,25 +69,6 @@
 
 
     <script src="{{ url('admin_asset/js/myscrirp.js') }}"></script>
-    <script type="text/javascript">
-    $(function() {
-          // this will get the full URL at the address bar
-          var url = window.location.href;
-
-          // passes on every "a" tag
-          $("#main-menu a").each(function() {
-              // checks if its the same on the address bar
-              if (url == (this.href)) {
-                  $(this).closest("a").addClass("active-menu");
-                $(this).parents('a').addClass('parent-active');
-              }
-          // $('#main-menu a').click(function(e) {
-          //         e.preventDefault();
-          //         $('#page-inner').load(url);
-          // });
-          });
-      });
-    </script>
 
 </body>
 </html>
