@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class UserController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('auth.admin.user.users');
+        $users = User::paginate(15);
+        return view('auth.admin.user.list_users',compact('users'));
     }
 
     /**
@@ -85,5 +86,43 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchUser(Request $request)
+    {
+      if($request->ajax())
+      {
+
+        $output="";
+        $role = "";
+        $users=User::where('name','LIKE','%'.$request->search_user."%")
+                      ->orWhere('phone_number','=',$request->search_user)
+                      ->orWhere('email','=',$request->search_user)->get();
+
+        $messger = "'Are you sure to want DELETE'";
+        if($users)
+        {
+        foreach ($users as $key => $user) {
+          if($user->role == 1)
+          {
+            $role = "Admin";
+          }
+          else {
+            $role = "User";
+          }
+        $output.='<tr class="gradeX odd" align="center" role="row">'.
+        '<td>'.$user->id.'</td>'.
+        '<td class="sorting_1">'.$user->name.'</td>'.
+        '<td>'.$user->gender.'</td>'.
+        '<td>'.$role.'</td>'.
+        '<td>'.$user->phone_number.'</td>'.
+        '<td>'.$user->email.'</td>'.
+        '<td class="center"><a  class="btn-danger btn-sm" href="/admin/users/'.$user->id.'/delete" onclick="return xacnhan('.$messger.')"><i class="fa fa-trash-o  fa-fw"></i>Delete</a> </td>'.
+        '<td class="center"> <a class="btn-info btn-sm" href="/admin/users/'.$user->id.'/edit"><i class="fa fa-pencil fa-fw"></i>Edit</a></td>'.
+        '</tr>';
+        }
+          return Response($output);
+        }
+      }
     }
 }

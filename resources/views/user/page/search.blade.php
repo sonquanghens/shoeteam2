@@ -25,14 +25,14 @@
 
             <div class="form-group">
               <div class="col-md-12" style="margin-bottom: 15px;">
-                p<p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> GIÁ</p>
+                <p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> GIÁ</p>
                 <select name="pricesearch" form="pricesearch" class="form-control">
-                              <option value="1"><i></i>30.000 - 150.000</option>
-                              <option value="2"><i></i>150.000 - 400.000</option>
-                              <option value="3"><i></i>400.000 - 800.000</option>
-                              <option value="4"><i></i>800.000 - 1.200.000</option>
-                              <option value="5"><i></i>1.200.000 - 1.600.000</option>
-                              <option value="6"><i></i>1.600.000 trở lên</option>
+                              <option value="1" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 1) ? 'selected' : '' }}><i></i>30.000 - 150.000</option>
+                              <option value="2" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 2) ? 'selected' : '' }}><i></i>150.000 - 400.000</option>
+                              <option value="3" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 3) ? 'selected' : '' }}><i></i>400.000 - 800.000</option>
+                              <option value="4" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 4) ? 'selected' : '' }}><i></i>800.000 - 1.200.000</option>
+                              <option value="5" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 5) ? 'selected' : '' }}><i></i>1.200.000 - 1.600.000</option>
+                              <option value="6" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 6) ? 'selected' : '' }}><i></i>1.600.000 trở lên</option>
                           </select>
                           <br>
                           <form id="pricesearch" class="pull-left" action="{{url('/pricesearch')}}" method="get">
@@ -87,7 +87,7 @@
 @stop
 
 @section('script')
-<script>
+<!-- <script>
     $(function(){
       $('#searchsubmit').click(function(e) {
         e.preventDefault();
@@ -102,5 +102,5 @@
         });
       });
     });
-</script>
+</script> -->
 @stop
