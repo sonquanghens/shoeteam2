@@ -1,0 +1,72 @@
+<div class="form-group">
+{!! Form::label('name', 'name_product') !!}
+<div class="form-controls">
+  {!! Form::text('name_product',null, ['class' => 'form-control']) !!}
+</div>
+  @if ( $errors->has('name_product') )
+    <span class="text-danger">
+        <strong> {{ $errors->first('name_product') }}</strong>
+    </span>
+  @endif
+</div>
+
+<div class="form-group">
+{!! Form::label('description', 'description') !!}
+<div class="form-controls">
+  {!! Form::textarea('description',null, ['class' => 'form-control']) !!}
+</div>
+  @if ( $errors->has('description') )
+    <span class="text-danger">
+        <strong> {{ $errors->first('description') }}</strong>
+    </span>
+  @endif
+</div>
+
+<div class="form-group">
+{!! Form::label('unit_price', 'unit_price') !!}
+<div class="form-controls">
+  {!! Form::text('unit_price',null, ['class' => 'form-control']) !!}
+</div>
+  @if ( $errors->has('unit_price') )
+    <span class="text-danger">
+        <strong> {{ $errors->first('unit_price') }}</strong>
+    </span>
+  @endif
+</div>
+
+<div class="form-group">
+{!! Form::label('promotion_price', 'promotion_price') !!}
+<div class="form-controls">
+  {!! Form::text('promotion_price',null, ['class' => 'form-control']) !!}
+</div>
+  @if ( $errors->has('promotion_price') )
+    <span class="text-danger">
+        <strong> {{ $errors->first('promotion_price') }}</strong>
+    </span>
+  @endif
+</div>
+
+<div class="form-group">
+{!! Form::label('branch', 'branch') !!}
+<div class="form-controls">
+  {!! Form::select('branch_id',$branch,null, ['class' => 'form-control']) !!}
+</div>
+  @if ( $errors->has('branch'))
+    <span class="text-danger">
+        <strong> {{ $errors->first('branch') }}</strong>
+    </span>
+  @endif
+  </div>
+  <!-- <div class="form-group">
+  {!! Form::label('image', 'Image') !!}
+  <div class="form-controls">
+    {!! Form::file('image',null, ['class' => 'form-control']) !!}
+  </div>
+  @if ( $errors->has('image') )
+    <span class="text-danger">
+        <strong> {{ $errors->first('image') }}</strong>
+    </span>
+  @endif
+  </div> -->
+
+{!! Form::submit('Save Product', ['class' => 'btn btn-primary']) !!}

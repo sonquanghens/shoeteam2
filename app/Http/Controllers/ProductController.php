@@ -68,4 +68,70 @@ class ProductController extends Controller
                break;
        }
      }
+
+     public function allProduct()
+     {
+        $products = Product::all();
+        return view('auth.admin.product.list_product', compact('products'));
+     }
+
+     public function delete($id)
+     {
+       $product = Product::find($id);
+       // dd($product);
+       $product->delete();
+       return redirect('/admin/product')->withSuccess('Success !! Complete Delete Branch');
+     }
+
+     public function editProduct($id)
+       {
+         $product = Product::find($id);
+         $branch = Branch::all()->pluck('name','id');
+         return view('auth.admin.product.edit_product',compact('product' ,'branch'));
+       }
+     public function updateProduct(CreateRequest $request,Product $product)
+       {
+         $data = $request->all();
+         dd($data);
+         if ($request->hasFile('image'))
+         {
+             $file = $request->file('image');
+             $filename = $file->getClientOriginalName();
+             $images = time(). "_" . $filename;
+             $destinationPath = public_path('/uploads');
+             $file->move($destinationPath, $images);
+             $data['image'] = $images;
+             $product->update($data);
+         } else {
+              $data['image'] = '';
+             $product->update($data);
+         }
+         return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Update Product');
+       }
+    public function create()
+        {
+          $branch = Branch::all()->pluck('name','id');
+          return view('auth.admin.product.create_product',compact('branch'));
+        }
+    public function addProduct(CreateRequest $request)
+        {
+          $data = $request->all();
+          if ($request->hasFile('image')  )
+          {
+              $file = $request->file('image');
+              $filename = $file->getClientOriginalName();
+              $images = time(). "_" . $filename;
+              $destinationPath = public_path('/uploads');
+              $file->move($destinationPath, $images);
+              $data['image'] = $images;
+              $branchs = Branch::create($data);
+          } else {
+            $data['image'] = '';
+            $branchs = Product::create($data);
+          }
+            return redirect('/admin/product')->withSuccess('Success !! Complete Create Branch');
+        }
+
+
+
 }

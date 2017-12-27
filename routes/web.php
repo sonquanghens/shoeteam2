@@ -41,9 +41,11 @@ Route::get('/', function() {
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  /// product
  Route::get('/product','ProductController@allProduct');
- Route::get('/product/delete/{id}','ProductController@delete');
+ Route::get('/product/{id}/delete','ProductController@delete');
+ Route::get('/product/{id}/edit','ProductController@editProduct');
  Route::get('/product/create','ProductController@create');
  Route::post('/product/add','ProductController@addProduct');
+ Route::put('product/{product}','ProductController@updateProduct');
 });
 
 
