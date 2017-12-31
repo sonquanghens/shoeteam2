@@ -89,6 +89,7 @@ class ProductController extends Controller
          $branch = Branch::all()->pluck('name','id');
          return view('auth.admin.product.edit_product',compact('product' ,'branch'));
        }
+
      public function updateProduct(CreateRequest $request,Product $product)
        {
          $data = $request->all();
@@ -108,11 +109,13 @@ class ProductController extends Controller
          }
          return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Update Product');
        }
+
     public function create()
         {
           $branch = Branch::all()->pluck('name','id');
           return view('auth.admin.product.create_product',compact('branch'));
         }
+
     public function addProduct(CreateRequest $request)
         {
           $data = $request->all();
@@ -132,6 +135,34 @@ class ProductController extends Controller
             return redirect('/admin/product')->withSuccess('Success !! Complete Create Branch');
         }
 
+        public function search(Request $request)
+        {
+          if($request->ajax())
+          {
+
+            $output="";
+
+            $products=Product::where('name','LIKE','%'.$request->search_product."%")->get();
+            dd($products);
+            $messger = "'Are you sure to want DELETE'";
+            if($products)
+            {
+            foreach ($products as $key => $product) {
+            $output.='<tr class="gradeX odd" align="center" role="row">'.
+            '<td>'.$product->id.'</td>'.
+            '<td class="sorting_1">'.$product->name_product.'</td>'.
+            '<td>'.$product->branch->name.'</td>'.
+            '<td>'.$product->unit_price .'</td>'.
+            '<td>'.$product->promotion_price.'</td>'.
+            '<td> <img src="/uploads/'.$product->image.'"height="50" width="50" /> </td>'.
+            '<td class="center"><a  class="btn-danger btn-sm" href="/admin/product/'.$product->id.'/delete" onclick="return xacnhan('.$messger.')"><i class="fa fa-trash-o  fa-fw"></i>Delete</a> </td>'.
+            '<td class="center"> <a class="btn-info btn-sm" href="/admin/product/'.$product->id.'/edit"><i class="fa fa-pencil fa-fw"></i>Edit</a></td>'.
+            '</tr>';
+            }
+              return Response($output);
+            }
+          }
+        }
 
 
 }

@@ -24,16 +24,6 @@ $(function() {
 		return false;
 	}
 
-	$(document).ready(function() {
-       $('#dataTables-example').DataTable({
-               responsive: false;
-       });
-   });
-
-
-
-
-
 $('#search').on('keyup',function(){
 		$value=$(this).val();
 		$.ajax({
@@ -59,10 +49,16 @@ $('#search_user').on('keyup',function(){
 		});
 });
 
-	 function xacnhan(msg) {
-		 if (window.confirm(msg)) {
-			 return true;
-		 }
-		 return false;
-	 }
+//search_product
+	 $('#search_product').on('keyup',function(){
+	 		$value=$(this).val();
 
+	 		$.ajax({
+	 		type : 'get',
+	 		url : '/admin/product/search',
+	 		data:{'search_product':$value},
+	 		success:function(data){
+	 		$('tbody').html(data);
+	 		}
+	 		});
+	 });

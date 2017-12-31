@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'ProductController@home');
-Route::get('/search', 'ProductController@getSearch');
+//Route::get('/search', 'ProductController@getSearch');
 Route::get('/products/{product}', 'ProductController@showProduct');
 Route::get('/products/branch/{name}', 'BranchController@getBranch');
 Route::get('/pricesearch', 'ProductController@PriceSearch');
@@ -32,7 +32,7 @@ Route::get('/', function() {
  Route::put('branch/{branch}', 'BranchController@updateBranch');
  Route::get('/branch/{branch}/delete', 'BranchController@deleteBranch');
 
- Route::get('/search','BranchController@search');
+ // Route::get('/search','BranchController@search');
 
  // end Branch
 
@@ -42,7 +42,6 @@ Route::get('/', function() {
  });
 
 
-});
 
 
 
@@ -52,10 +51,20 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  Route::get('/product','ProductController@allProduct');
  Route::get('/product/{id}/delete','ProductController@delete');
  Route::get('/product/{id}/edit','ProductController@editProduct');
+ Route::put('product/{product}','ProductController@updateProduct');
  Route::get('/product/create','ProductController@create');
  Route::post('/product/add','ProductController@addProduct');
- Route::put('product/{product}','ProductController@updateProduct');
+ Route::get('/product/search','ProductController@search');
+
+
 });
+
+Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
+    //order
+ Route::get('/order','OrderController@allOrder');
+
+  });
+   Route::get('/admin/search_order', 'OrderController@searchOrders');
 
 
 

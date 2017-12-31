@@ -8,7 +8,7 @@
       </div>
       <div class="row">
           <div class="col-md-12">
-                {!! Form::open(['url' => '/admin/product/add','files' => true]) !!}
+                {!! Form::open(['url' => '/admin/product/add','files' => true ]) !!}
                    @include('auth.admin.pratials.forms.product')
                {!! Form::close() !!}
           </div>
@@ -16,6 +16,4 @@
 
   <!-- /. PAGE INNER  -->
   </div>
-
-
 @stop

@@ -57,7 +57,7 @@
     </span>
   @endif
   </div>
-  <!-- <div class="form-group">
+  <div class="form-group">
   {!! Form::label('image', 'Image') !!}
   <div class="form-controls">
     {!! Form::file('image',null, ['class' => 'form-control']) !!}
@@ -67,6 +67,6 @@
         <strong> {{ $errors->first('image') }}</strong>
     </span>
   @endif
-  </div> -->
+  </div>
 
 {!! Form::submit('Save Product', ['class' => 'btn btn-primary']) !!}
