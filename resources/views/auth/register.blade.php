@@ -27,7 +27,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                             <label for="gender" class="col-md-4 control-label">Giới Tính</label>
 
                             <div class="col-md-6">
@@ -39,7 +39,8 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
+
 
                         <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
                             <label for="phone_number" class="col-md-4 control-label">Số Điện Thoại</label>
@@ -89,6 +90,31 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label ">Nam</label>
+
+                            <div class="col-md-2">
+                                <input id="Male" type="radio" class="form-control" name="gender" value="Male" checked>
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <label for="password" class="col-md-2 control-label">Nữ</label>
+
+                            <div class="col-md-2">
+                                <input id="Female" type="radio" class="form-control" name="gender"value="Female" >
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

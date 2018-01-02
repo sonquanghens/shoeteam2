@@ -6,7 +6,7 @@
             <div class="col-sm-5">
               <h1 class="page-head">User <small>list</small></h1>
             </div>
-            <div class="col-sm-3" style="margin-top:30px;width: 31%;">
+            <div class="col-sm-3" style="margin-top:30px;width: 28%;">
               <p style="float:right;"><a class="btn-primary btn-lg" role="button" href="#">CREATE</a></p>
             </div>
               <div class="input-group" style="float: right;    margin-top: 19px;">
