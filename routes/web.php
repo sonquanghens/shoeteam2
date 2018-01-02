@@ -13,7 +13,7 @@
 //index
 
 Route::get('/', 'ProductController@home');
-Route::get('/search', 'ProductController@getSearch');
+//Route::get('/search', 'ProductController@getSearch');
 Route::get('/products/{product}', 'ProductController@showProduct');
 Route::get('/products/branch/{name}', 'BranchController@getBranch');
 Route::get('/pricesearch', 'ProductController@PriceSearch');
@@ -63,9 +63,14 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
   Route::get('carts/manage/export', 'OrderController@export_order');
 	Route::get('carts/manage/{id}/detail/export', 'OrderController@export_order_detail');
 
-//order
+Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
+  //order
   Route::get('/order/checkout' , 'OrderController@getOrder')->middleware('auth');
   Route::post('/order', 'OrderController@SaveOrder');
+  Route::get('/order','OrderController@allOrder');
+  Route::get('/search_order','OrderController@searchOrders');
+
+});
 
 Auth::routes();
 

@@ -6,6 +6,7 @@ use App\Branch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\EditProductRequest;
+use App\Http\Requests\CreateRequest;
 
 class ProductController extends Controller
 {
@@ -94,16 +95,15 @@ class ProductController extends Controller
      {
          $branch = Branch::all()->pluck('name','id');
          return view('auth.admin.product.edit_product',compact('product' ,'branch'));
-     }
-
-     public function create()
-     {
+      }
+    public function create()
+        {
           $branch = Branch::all()->pluck('name','id');
           return view('auth.admin.product.create_product',compact('branch'));
-     }
+        }
 
-     public function addProduct(EditProductRequest $request)
-     {
+    public function addProduct(CreateRequest $request)
+        {
           $data = $request->all();
           if ($request->hasFile('image')  )
           {
@@ -148,6 +148,7 @@ class ProductController extends Controller
                            ->paginate(15);
         return view('auth.admin.product.product_search',compact('products'));
      }
+
 
 
 

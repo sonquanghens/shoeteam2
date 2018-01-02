@@ -90,6 +90,6 @@
         <strong> {{ $errors->first('image') }}</strong>
     </span>
   @endif
-  </div> -->
+  </div>
 
 {!! Form::submit('Save Product', ['class' => 'btn btn-primary']) !!}

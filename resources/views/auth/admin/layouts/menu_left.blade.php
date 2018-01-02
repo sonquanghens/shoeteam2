@@ -12,7 +12,7 @@
             </li>
 
             <li>
-                <a  href="#"><i class="fa fa-dashboard "></i>Dashboard</a>
+                <a  href="{{ url('/admin/order') }}"><i class="fa fa-cube fa-fw"></i>Order</a>
             </li>
             <li>
                 <a href="{{ url('/admin/product/list_product') }}"><i class="fa fa-cube fa-fw"></i>Products</a>
