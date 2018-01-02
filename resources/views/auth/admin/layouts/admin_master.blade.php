@@ -32,7 +32,6 @@
 
 </head>
 <body>
-  {!! Toastr::render() !!}
     <div id="wrapper">
         @include('auth.admin.layouts.header')
         <!-- /. NAV TOP  -->
@@ -75,6 +74,8 @@
 
 
     <script src="{{ url('admin_asset/js/myscrirp.js') }}"></script>
+
+  {!! Toastr::render() !!}
 
 </body>
 </html>

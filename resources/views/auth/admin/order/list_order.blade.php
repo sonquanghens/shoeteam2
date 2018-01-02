@@ -74,7 +74,14 @@
                             </tbody>
                       </table>
                     </div>
+                    <h1>
+                      @if(isset($sum_total))
+                        <h3>&nbsp;&nbsp;&nbsp;Tổng tiền : {{number_format ($sum_total, 0,'','.')}} đ</h3>
+                      @endif
+                    </h1>
+                  @if(isset($orders))
                   {{ $orders->links() }}
+                  @endif
                   </div>
                 </div>
               </div>
