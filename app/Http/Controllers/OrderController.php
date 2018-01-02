@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Branch;
@@ -113,6 +112,7 @@ class OrderController extends Controller
         }
         return view('auth.admin.order.list_order',compact('orders','sum_total'));
       }
+    }
       public function getOrder()
       {
         //dd(Cart::content());
@@ -206,5 +206,5 @@ class OrderController extends Controller
          return $pdf->stream('order-detail.pdf');
       }
 
-    }
+
 }

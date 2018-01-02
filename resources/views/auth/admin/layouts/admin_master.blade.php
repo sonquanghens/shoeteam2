@@ -75,8 +75,6 @@
 
     <script src="{{ url('admin_asset/js/myscrirp.js') }}"></script>
 
-  {!! Toastr::render() !!}
-
 </body>
 
 </html>

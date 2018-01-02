@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a714c7ad27ac6e181c78d60661153173",
+    "content-hash": "55e2be78cdf942737210538526009a62",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1103,65 +1103,6 @@
                 "php"
             ],
             "time": "2017-12-26T14:43:21+00:00"
-        },
-        {
-            "name": "oriceon/toastr-5-laravel",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/oriceon/toastr-5-laravel.git",
-                "reference": "4ce3779ba7bd76f7a9cdc4dad90ed85b300218cf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/oriceon/toastr-5-laravel/zipball/4ce3779ba7bd76f7a9cdc4dad90ed85b300218cf",
-                "reference": "4ce3779ba7bd76f7a9cdc4dad90ed85b300218cf",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/session": ">=5.0.0",
-                "illuminate/support": ">=5.0.0",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Kamaln7\\Toastr\\ToastrServiceProvider"
-                    ],
-                    "aliases": {
-                        "Toastr": "Kamaln7\\Toastr\\Facades\\Toastr"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Kamaln7\\Toastr\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kamal Nasser",
-                    "email": "kamal@kamalnasser.net"
-                },
-                {
-                    "name": "Valentin Ivascu",
-                    "email": "oriceon@gmail.com"
-                }
-            ],
-            "description": "Easy toastr notifications for Laravel 5",
-            "homepage": "https://github.com/oriceon/toastr-5-laravel",
-            "keywords": [
-                "laravel",
-                "notification",
-                "php",
-                "toastr"
-            ],
-            "time": "2018-01-02T07:28:16+00:00"
         },
         {
             "name": "niklasravnsborg/laravel-pdf",
@@ -4246,9 +4187,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "oriceon/toastr-5-laravel": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
