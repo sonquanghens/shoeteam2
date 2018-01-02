@@ -15,15 +15,16 @@
 						  </div>
 							<div class="form-group">
 								<strong><label for="name">Họ tên (*)</label></strong>
-								@if(Auth::check())
+
 								<div class="form-controls">
-									<input class="form-control" type="text" id="name_receiver" placeholder="Họ tên" name="name_receiver"  value="{{Auth::user()->name}}" required>
-							  </div>
-								@else
-								<div class="form-controls">
-									<input class="form-control" type="text" id="name_receiver" placeholder="Họ tên" name="name_receiver"  required>
+									<input class="form-control" type="text" id="name_receiver" placeholder="Họ tên" name="name_receiver"  @if(Auth::check()) ? value="{{Auth::user()->name}}" : value=""  @endif>
+									@if($errors->has('name_receiver'))
+										<p style="color: #e30000;font-weight: bold;">
+												{{ $errors->first('name_receiver') }}
+										</p>
+									@endif
 								</div>
-								@endif
+
 							</div>
 							<!-- <div class="form-block">
 								<label>Giới tính </label>
@@ -34,22 +35,25 @@
 
 							<div class="form-group">
 								<label for="email">Email (*)</label>
-								@if(Auth::check())
 								<div class="form-controls">
-									<input class="form-control" type="email" name="email" id="email" value="{{Auth::user()->email}}" required placeholder="expample@gmail.com">
+									<input class="form-control" type="email" name="email" id="email"  @if(Auth::check()) ? value="{{Auth::user()->email}}" : value=""  @endif placeholder="expample@gmail.com">
+									@if($errors->has('email'))
+										<p style="color: #e30000;font-weight: bold;">
+												{{ $errors->first('email') }}
+										</p>
+									@endif
 								</div>
-								@else
-								<div class="form-controls">
-								 <input class="form-control" type="email" id="email" name="email" required placeholder="expample@gmail.com">
-							 </div>
-								@endif
-
 							</div>
 
 							<div class="form-group">
 								<label for="adress">Địa chỉ nhận (*)</label>
 								<div class="form-controls">
-									<input class="form-control" type="text" id="adress" name="adress" placeholder="Street Address" required>
+									<input class="form-control" type="text" id="adress" value="{!! old('adress') !!}" name="adress" placeholder="Street Address" >
+									@if($errors->has('adress'))
+										<p style="color: #e30000;font-weight: bold;">
+												{{ $errors->first('adress') }}
+										</p>
+									@endif
 								</div>
 							</div>
 
@@ -57,7 +61,12 @@
 							<div class="form-group">
 								<label for="phone">Điện thoại (*)</label>
 								<div class="form-controls">
-									<input class="form-control" type="text" id="phone" name="phone" required>
+									<input class="form-control" type="text" id="phone" value="{!! old('phone') !!}" placeholder="Phone Number" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" >
+									@if($errors->has('phone'))
+										<p style="color: #e30000;font-weight: bold;">
+												{{ $errors->first('phone') }}
+										</p>
+									@endif
 								</div>
 							</div>
 						</div>
@@ -103,7 +112,7 @@
 									</li>
 								</ul>
 							</div>
-							<div class="text-center"><button class="beta-btn primary" type="submit">Đặt hàng</i></a></div>
+							<div class="text-center"><button class="beta-btn primary" type="submit">Đặt hàng</input></a></div>
 						</div> <!-- .your-order -->
 					</div>
 				</div>

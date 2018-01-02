@@ -19,8 +19,12 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('date_order');
             $table->double('total')->unsigned();
-            $table->string('payment');
+            $table->string('name_receiver');
+            $table->string('phone');
+            $table->string('address_recevie');
+            $table->date('ship_date');
             $table->string('note');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

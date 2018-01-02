@@ -25,7 +25,7 @@
                   <th>Ngày Đặt Hàng</th>
                   <th>Trạng Thái</th>
                   <th>Địa Chỉ Giao Hàng</th>
-                  <th>Tình Trạng Giao Hàng</th>
+                  <th>Ngày Giao</th>
                   <th>Số Điện Thoại</th>
                   <th>Tên Người Nhận</th>
                   <th>Người Đặt Hàng</th>
@@ -35,14 +35,16 @@
                 </thead>
                 <tbody>
 	                @foreach ($orders as $order)
+										@foreach ($order->orderdetails as $item)
 		             <tr>
 		                  <td>{{ $order->id}}</td>
 		                  <td>{{ $order->date_order}}</td>
 		                  <td>{{ $order->note}}</td>
-		                  <td>123</td>
-		                  <td>123</td>
-		                  <td>123</td>
-		                  <td>123</td>
+		                  <td>{{ $item->address_recevie}} </td>
+		                  <td>{{ $item->ship_date}} </td>
+		                  <td>{{ $item->phone}} </td>
+		                  <td>{{ $item->name}} </td>
+
 		                  <td>{{ App\User::find($order->user_id)->name}}</td>
 		                  @if( $order->note == 'in process')
 		                  <td style="text-align: center;">
@@ -53,8 +55,13 @@
 		                  @else
 		                  <td style="text-align: center; vertical-align: middle;">Không khả dụng</td>
 		                  @endif
-		                  <td><a href="{{ url('carts/manage/' . $order->id .'/detail') }}">Xem chi tiết</a></td>
+											@if( $order->note != 'cancelled')
+		                   <td><a href="{{ url('carts/manage/' . $order->id .'/detail') }}">Xem chi tiết</a></td>
+											@else
+											 <td style="text-align: center; vertical-align: middle;">Không khả dụng</td>
+											@endif
 	                </tr>
+										@endforeach
 	                @endforeach
                 </tbody>
              </table>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Cart;
+use App\Http\Requests\CustomerRequests;
 use App\Order;
 use App\Product;
 use App\OrderDetail;
@@ -20,9 +21,8 @@ class OrderController extends Controller
         return view('user.shop.order');
     }
 
-    public function SaveOrder(Request $request)
+    public function SaveOrder(CustomerRequests $request)
     {
-
        $name = $request->Input('name_receiver');
        $datetime = new DateTime;
 
@@ -41,8 +41,12 @@ class OrderController extends Controller
           'user_id' =>  $id_user,
           'date_order' => $datetime->format('Y-m-d'),
           'total' => Cart::total(0, '', ''),
-          'payment' => $request->Input('payment_method'),
+          'name_receiver' => $name,
+          'phone' => $request->Input('phone'),
+          'address_recevie' => $request->Input('adress'),
+          'ship_date' => $NewDate,
           'note' => 'in process',
+          'status' => 1,
 
         ];
 
@@ -53,14 +57,9 @@ class OrderController extends Controller
            OrderDetail::create([
              'order_id' => $order->id,
              'product_id' => $item->id,
-             'name' => $name,
-             'phone' => $request->Input('phone'),
-             'address_recevie' => $request->Input('adress'),
-             'ship_date' => $NewDate,
              'quantily' => $item->qty,
              'unit_price' => number_format($item->subtotal, 0,'',''),
              'size' => $item->options->size,
-             'note' => 'NULL',
            ]);
            $product = Product::find($item->id);
            $product->update(['count' => $product->count + 1]);
@@ -79,7 +78,7 @@ class OrderController extends Controller
     public function cancel($id)
     {
         $order = Order::find($id);
-        $order->update(['note' => 'not process']);
+        $order->update(['note' => 'cancelled']);
         return redirect('carts/manage');
     }
 
@@ -96,7 +95,7 @@ class OrderController extends Controller
            $excel->sheet('Excel sheet', function($sheet) use($orders) {
                $sheet->fromArray($orders);
            });
-       })->export('pdf');
+       })->export('xls');
        return redirect('carts/manage');
     }
 
