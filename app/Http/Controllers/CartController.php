@@ -31,16 +31,26 @@ class CartController extends Controller
         $item = Cart::get($rowId);
         Cart::update($rowId, $item->qty - 1);
         $total = Cart::total();
-        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal,'total' => $total], 200);
-
-    }
+        $count = Cart::count();
+        return response([
+          'count' => $count,
+          'qty' => $item->qty,
+          'subtotal' => $item->subtotal,
+          'total' => $total], 200
+        );
+     }
 
     public function up_count($rowId)
     {
         $item = Cart::get($rowId);
         Cart::update($rowId, $item->qty + 1);
         $total = Cart::total();
-        return response(['qty' => $item->qty, 'subtotal' => $item->subtotal,'total' => $total], 200);
+        $count = Cart::count();
+        return response([
+          'count' => $count,
+          'qty' => $item->qty,
+          'subtotal' => $item->subtotal,
+          'total' => $total], 200);
     }
 
     public function delete($rowId)

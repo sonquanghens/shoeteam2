@@ -19,13 +19,8 @@ class CreateOrderDetailsTable extends Migration
           $table->foreign('order_id')->references('id')->on('orders');
           $table->integer('product_id')->unsigned()->nullable();
           $table->foreign('product_id')->references('id')->on('products');
-          $table->string('name');
-          $table->string('phone');
-          $table->string('address_recevie');
-          $table->date('ship_date');
           $table->integer('quantily')->unsigned();
           $table->double('unit_price');
-          $table->string('note');
           $table->timestamps();
         });
     }

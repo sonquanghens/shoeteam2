@@ -19,7 +19,6 @@ class ProductController extends Controller
 
      public function getSearch(Request $req)
      {
-       // $branch = Branch::where('name','like','%'.$req->key.'%')->first();
        if($req->key!=null)
        {
          $products = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
