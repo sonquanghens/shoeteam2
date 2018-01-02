@@ -165,7 +165,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+
+        Kamaln7\Toastr\ToastrServiceProvider::class,
+
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -231,7 +235,9 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Toastr' => Kamaln7\Toastr\Facades\Toastr::class,
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+
 
     ],
 
