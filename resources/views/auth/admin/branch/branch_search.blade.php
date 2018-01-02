@@ -9,15 +9,15 @@
             <div class="col-sm-3" style="margin-top:30px;width: 30%;">
               <p style="float:right;"><a class="btn-primary btn-lg" role="button" href="{{ url('/admin/branch/create') }}">CREATE</a></p>
             </div>
-              <div class="input-group" style="float: right;    margin-top: 19px;">
-                <form class="navbar-form navbar-left" role="search" method="get" id="searchform" action="{{url('admin/branch/search')}}">
+              <div class="input-group" style="float: right;margin-top: 19px;">
+                <form class="navbar-form navbar-left" method="get" id="searchform" action="{{url('admin/branch/search')}}">
                   <div class="form-group">
                     <input type="text" value="{{ isset($_GET['value']) ? $_GET['value'] : '' }}" name="value" class="form-control" placeholder="Search" id="search">
                     <button type="submit"  class="btn btn-info">sreach</button>
                   </div>
                 </form>
             </div>
-      </div>
+          </div>
       </div>
       <div class="row">
           <div class="col-md-12">
@@ -47,7 +47,6 @@
                                   <td class="sorting_1">{{ $branch->name }}</td>
                                   <td>{{ $branch->description }}</td>
                                   <td> <img src="/uploads/{{ $branch->image }}" height="50" width="50" alt=""></td>
-
                                   <td class="center"><a  class="btn-danger btn-sm" href="{{url('/admin/branch'.'/'.$branch->id.'/delete')}}" onclick="return xacnhan('Are you sure to want DELETE')"><i class="fa fa-trash-o  fa-fw"></i>Delete</a></td>
                                   <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/branch'.'/'.$branch->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i>Edit</a></td>
                               </tr>

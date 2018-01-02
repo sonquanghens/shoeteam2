@@ -10,6 +10,7 @@ use App\Product;
 
 class BranchController extends Controller
 {
+
     public function CreateBranch()
     {
        return view('auth.admin.branch.create_branch');
@@ -45,7 +46,7 @@ class BranchController extends Controller
     }
 
     public function Branch(){
-      $branchs = Branch::paginate(15);
+      $branchs = Branch::paginate(25);
       return view('auth.admin.branch.branch_list',compact('branchs'));
     }
 
@@ -79,30 +80,10 @@ class BranchController extends Controller
       return redirect('/admin/branch/list_branch')->withSuccess('Success !! Complete Delete Branch');
     }
 
-    public function search(Request $request)
+    public function search_branch(Request $request)
     {
-      if($request->ajax())
-      {
 
-        $output="";
-
-        $branchs=Branch::where('name','LIKE','%'.$request->search."%")->get();
-        $messger = "'Are you sure to want DELETE'";
-        if($branchs)
-        {
-        foreach ($branchs as $key => $branch) {
-        $output.='<tr class="gradeX odd" align="center" role="row">'.
-        '<td>'.$branch->id.'</td>'.
-        '<td class="sorting_1">'.$branch->name.'</td>'.
-        '<td>'.$branch->description.'</td>'.
-        '<td> <img src="/uploads/'.$branch->image.'"height="50" width="50" /> </td>'.
-        '<td class="center"><a  class="btn-danger btn-sm" href="/admin/branch/'.$branch->id.'/delete" onclick="return xacnhan('.$messger.')"><i class="fa fa-trash-o  fa-fw"></i>Delete</a> </td>'.
-        '<td class="center"> <a class="btn-info btn-sm" href="/admin/branch/'.$branch->id.'/edit"><i class="fa fa-pencil fa-fw"></i>Edit</a></td>'.
-        '</tr>';
-        }
-          return Response($output);
-        }
-      }
+        $branchs = Branch::where('name','LIKE','%'.$request->value.'%')->paginate(10);
+        return view('auth.admin.branch.branch_search',compact('branchs'));
     }
-
 }

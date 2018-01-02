@@ -19,10 +19,9 @@ class CreateProductsTable extends Migration
          $table->integer('branch_id')->unsigned()->nullable();
          $table->foreign('branch_id')->references('id')->on('branchs');
          $table->string('description');
-         $table->float('unit_price')->unsigned();
-         $table->float('promotion_price')->unsigned();
+         $table->double('unit_price')->unsigned();
+         $table->double('promotion_price')->unsigned();
          $table->string('image');
-         $table->string('unit');
          $table->timestamps();
         });
     }

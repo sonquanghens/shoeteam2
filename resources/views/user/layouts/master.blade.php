@@ -6,7 +6,7 @@
     <title>Laravel </title>
     <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="/source/assets/dest/css/font-awesome.min.css">
     <link rel="stylesheet" href="/source/assets/dest/vendors/colorbox/example3/colorbox.css">
@@ -35,6 +35,7 @@
 
 
     <!-- include js files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/source/assets/dest/js/jquery.js"></script>
     <script src="/source/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="{{ url('/js/bootstrap.min.js')}}"></script>
@@ -58,8 +59,22 @@
                 $(".header-bottom").removeClass('fixNav')
             }}
         )
-    })
+    });
     </script>
-    @yield('script')
+
 </body>
-</html>
+  @yield('script')
+    <script>
+        function addCart(id)
+        {
+              var size = $('#size').val();
+              var root = '{{url('/carts')}}';
+              var url = root +'/'+id+'/'+size+'/add';
+            $.get(url, function(data, status){
+              //  alert(data.size);
+            //   $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+              $('#count').replaceWith('<span id="count">' + data.count +'</span> ');
+              $('.cart-items', $('#cart-wrap')).html(data.items);
+            });
+        }
+  </script>

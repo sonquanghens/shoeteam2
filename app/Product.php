@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-   protected $fillable = ['name_product','branch_id','description','unit_price','promotion_price','image','unit'];
+   protected $fillable = ['name_product','branch_id','description','unit_price','promotion_price','image','count','size'];
    protected $table='products';
 
    public function branch()

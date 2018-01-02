@@ -5,13 +5,15 @@ use App\Product;
 use App\Branch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\Http\Requests\CreateRequest;
+use App\Http\Requests\EditProductRequest;
 
 class ProductController extends Controller
 {
     public function home()
      {
-       return view('user.page.contents');
+       $products = Product::orderBy('id','desc')->skip(0)->take(4)->get();
+       $topproduct = Product::orderBy('count','desc')->skip(0)->take(4)->get();
+       return view('user.page.contents', compact('products','topproduct'));
      }
 
      public function getSearch(Request $req)
@@ -32,7 +34,14 @@ class ProductController extends Controller
 
      public function showProduct(Product $product)
      {
-        return view('user.page.show_product_details',compact('product'));
+        // dd($product->id);
+        $items = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
+                            ->where('branchs.id','=',$product->branch->id)
+                            ->where('products.id','<>',$product->id)
+                            ->select('products.*')->inRandomOrder()->take(4)->get();
+        $topproduct = Product::orderBy('count','desc')->skip(0)->take(4)->get();
+        $allproduct = Product::orderBy('id','desc')->skip(0)->take(4)->get();
+        return view('user.page.show_product_details',compact('product','items','topproduct','allproduct'));
      }
 
      public function PriceSearch(Request $request)
@@ -75,46 +84,27 @@ class ProductController extends Controller
         return view('auth.admin.product.list_product', compact('products'));
      }
 
-     public function delete($id)
+     public function delete(Product $product)
      {
-       $product = Product::find($id);
-       // dd($product);
+       unlink(public_path('/uploads/'.$product->image));
        $product->delete();
-       return redirect('/admin/product')->withSuccess('Success !! Complete Delete Branch');
+       return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Delete Branch');
      }
 
-     public function editProduct($id)
-       {
-         $product = Product::find($id);
+     public function editProduct(Product $product)
+     {
          $branch = Branch::all()->pluck('name','id');
          return view('auth.admin.product.edit_product',compact('product' ,'branch'));
-       }
-     public function updateProduct(CreateRequest $request,Product $product)
-       {
-         $data = $request->all();
-         dd($data);
-         if ($request->hasFile('image'))
-         {
-             $file = $request->file('image');
-             $filename = $file->getClientOriginalName();
-             $images = time(). "_" . $filename;
-             $destinationPath = public_path('/uploads');
-             $file->move($destinationPath, $images);
-             $data['image'] = $images;
-             $product->update($data);
-         } else {
-              $data['image'] = '';
-             $product->update($data);
-         }
-         return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Update Product');
-       }
-    public function create()
-        {
+     }
+
+     public function create()
+     {
           $branch = Branch::all()->pluck('name','id');
           return view('auth.admin.product.create_product',compact('branch'));
-        }
-    public function addProduct(CreateRequest $request)
-        {
+     }
+
+     public function addProduct(EditProductRequest $request)
+     {
           $data = $request->all();
           if ($request->hasFile('image')  )
           {
@@ -124,13 +114,41 @@ class ProductController extends Controller
               $destinationPath = public_path('/uploads');
               $file->move($destinationPath, $images);
               $data['image'] = $images;
-              $branchs = Branch::create($data);
+              $product = Product::create($data);
           } else {
             $data['image'] = '';
-            $branchs = Product::create($data);
+            $product = Product::create($data);
           }
-            return redirect('/admin/product')->withSuccess('Success !! Complete Create Branch');
-        }
+            return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Create Branch');
+     }
+
+     public function updateProduct(EditProductRequest $request,Product $product)
+     {
+          $data = $request->all();
+          if ($request->hasFile('image'))
+          {
+              $file = $request->file('image');
+              $filename = $file->getClientOriginalName();
+              $images = time(). "_" . $filename;
+              $destinationPath = public_path('/uploads');
+              $file->move($destinationPath, $images);
+              $data['image'] = $images;
+              $product->update($data);
+          } else {
+              $request->image=$request->productimage;
+              $product->update($data);
+          }
+            return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Update Product');
+     }
+
+     public function search_product(Request $request)
+     {
+       $products = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
+                           ->where('products.name_product','like','%'.$request->search_product.'%')
+                           ->orWhere('branchs.name','like','%'.$request->search_product.'%')
+                           ->paginate(15);
+        return view('auth.admin.product.product_search',compact('products'));
+     }
 
 
 

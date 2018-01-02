@@ -71,4 +71,5 @@
     <script src="{{ url('admin_asset/js/myscrirp.js') }}"></script>
 
 </body>
+
 </html>
