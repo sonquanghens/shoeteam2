@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends Model
 {
-  protected $fillable = ['bill_id','product_id' ,'name','phone','address_recevie','ship_date','quantily','unit_price','note'];
+  protected $fillable = ['order_id','product_id' ,'name','phone','address_recevie','ship_date','quantily','unit_price','size','note'];
   protected $table='order_details';
 
-  public function products()
+  public function product()
   {
     return $this->belongsTo('App\Product');
   }
 
-  public function orders()
+  public function order()
   {
     return $this->belongsTo('App\Order');
   }

@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
            $role = Auth::user()->role;
             if ($role==0)
-             return view('user.page.contents');
+             return redirect('/');
            else
              return redirect('/admin');
     }
