@@ -148,7 +148,11 @@ class OrderController extends Controller
         }
         return view('auth.admin.order.list_order',compact('orders','sum_total'));
       }
+
+    }
+
       
+
       public function getOrder()
       {
         //dd(Cart::content());
@@ -192,7 +196,12 @@ class OrderController extends Controller
          $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items]);
          return $pdf->stream('order-detail.pdf');
       }
+
+
+
+
         
       
     }
+
 }
