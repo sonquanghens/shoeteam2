@@ -27,7 +27,7 @@ class EditProductRequest extends FormRequest
           'image' => 'mimes:jpeg,bmp,png',
           'promotion_price' => 'required',
           'unit_price' => 'required',
-          'description' => ' required' ,
+          'description' => ' required',
           'name_product' => 'required'
         ];
     }

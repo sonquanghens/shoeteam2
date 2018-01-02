@@ -82,7 +82,6 @@ class BranchController extends Controller
 
     public function search_branch(Request $request)
     {
-
         $branchs = Branch::where('name','LIKE','%'.$request->value.'%')->paginate(10);
         return view('auth.admin.branch.branch_search',compact('branchs'));
     }

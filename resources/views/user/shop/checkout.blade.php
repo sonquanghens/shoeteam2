@@ -112,6 +112,7 @@
 
 					$('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;  width:70px;">');
 					$('#sub' + rowId).replaceWith('<span class="amount" id="sub'+rowId+'">'+sub+' VNĐ </span>');
+					$('#count').replaceWith('<span id="count">' + data.count +'</span> ');
 					$('#totals').replaceWith('<span id="totals" class="amount"  style="  color:  #000000;  font-weight:  bold;">'+total+' VNĐ </span>');
 					});
 			}
@@ -126,6 +127,7 @@
 
 							$('#'+ rowId).replaceWith('<input type="text" id="'+rowId+'" name="quantity" value="' + data.qty +'" size="2" style="text-align: center;  width:70px;">');
 							$('#sub' + rowId).replaceWith('<span id="sub'+rowId+'">'+sub+' VNĐ </span>');
+							$('#count').replaceWith('<span id="count">' + data.count +'</span> ');
 							$('#totals').replaceWith('<span id="totals" class="amount" style="  color:  #000000;  font-weight:  bold;">'+total+' VNĐ </span>');
 				});
 			}
