@@ -15,8 +15,8 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('bill_id')->unsigned()->nullable();
-          $table->foreign('bill_id')->references('id')->on('orders');
+          $table->integer('order_id')->unsigned()->nullable();
+          $table->foreign('order_id')->references('id')->on('orders');
           $table->integer('product_id')->unsigned()->nullable();
           $table->foreign('product_id')->references('id')->on('products');
           $table->string('name');

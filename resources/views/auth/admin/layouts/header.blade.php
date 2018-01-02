@@ -6,8 +6,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a  class="navbar-brand" href="{{ url('/') }}">
-            <img src="/img/Recent-Clients-Nike.png" alt="" style="height: 62px;  width: 96px;  margin-left: 25px;">
+        <a  class="navbar-brand" href="{{url('/')}}">
+            <img src="/img/Recent-Clients-Nike.png" alt="" style="height: 62px;  width: 96px;  margin-left: 25px;
+">
         </a>
     </div>
 

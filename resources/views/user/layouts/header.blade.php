@@ -3,16 +3,20 @@
     <div class="pull-right auto-width-right">
       <ul class="top-details menu-beta l-inline">
         @if(Auth::guest())
+        <li><a href="{{url('carts/manage')}}">Checkout</a></li>
         <li><a href="/register">Đăng kí</a></li>
         <li><a href="/login">Đăng nhập</a></li>
         @else
+        <li><a href="{{url('carts/manage')}}">Checkout</a></li>
         <li><a href="/home"><i class="fa fa-user"></i>{{Auth::user()->name}}</a></li>
         <li><a href="{{route('logout')}}" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();"                  >Đăng xuất</a></li>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
           </form>
-          <li><a href="/admin">Quản lý</a></li>
+          @if(Auth::user()->role == 1)
+            <li><a href="/admin">Quản lý</a></li>
+          @endif
         @endif
       </ul>
     </div>

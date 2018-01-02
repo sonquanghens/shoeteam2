@@ -16,14 +16,16 @@ $(function() {
 			// });
 			});
 	});
+
 	$("div.alert").delay(3000).slideUp();
+
 	function xacnhan(msg) {
 		if (window.confirm(msg)) {
 			return true;
 		}
 		return false;
 	}
-
+//search branch
 $('#search').on('keyup',function(){
 		$value=$(this).val();
 		$.ajax({
@@ -36,7 +38,7 @@ $('#search').on('keyup',function(){
 		});
 });
 
-
+//search user
 $('#search_user').on('keyup',function(){
 		$value=$(this).val();
 		$.ajax({
@@ -48,17 +50,17 @@ $('#search_user').on('keyup',function(){
 		}
 		});
 });
+//search product
+$('#searchproduct').on('keyup',function(){
 
-//search_product
-	 $('#search_product').on('keyup',function(){
-	 		$value=$(this).val();
-
-	 		$.ajax({
-	 		type : 'get',
-	 		url : '/admin/product/search',
-	 		data:{'search_product':$value},
-	 		success:function(data){
-	 		$('tbody').html(data);
-	 		}
-	 		});
-	 });
+		$value=$(this).val();
+		$.ajax({
+		type : 'get',
+		url : '/admin/product/search',
+		contentType: 'application/json;',
+		data:{'searchproduct':$value},
+		success:function(data){
+		$('tbody').html(data);
+		}
+		});
+});

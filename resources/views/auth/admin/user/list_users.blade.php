@@ -3,16 +3,17 @@
   <div id="page-inner">
       <div class="row">
           <div class="col-md-12" style=" margin-bottom: 25px;  border-bottom: 2px solid #d2d2d2;">
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <h1 class="page-head">User <small>list</small></h1>
             </div>
             <div class="col-sm-3" style="margin-top:30px;width: 28%;">
               <p style="float:right;"><a class="btn-primary btn-lg" role="button" href="#">CREATE</a></p>
             </div>
               <div class="input-group" style="float: right;    margin-top: 19px;">
-                <form class="navbar-form navbar-left" role="">
+                <form class="navbar-form navbar-left" method="get" id="searchform" action="{{url('admin/users/search')}}">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="search_user" placeholder="Search" id="search_user">
+                    <input type="text" value="{{ isset($_GET['search_user']) ? $_GET['search_user'] : '' }}" name="search_user" class="form-control" placeholder="Search">
+                    <button type="submit"  class="btn btn-info">sreach</button>
                   </div>
                 </form>
             </div>

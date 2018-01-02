@@ -1,5 +1,5 @@
 <div class="form-group">
-{!! Form::label('name', 'name_product') !!}
+{!! Form::label('name_product', 'Name') !!}
 <div class="form-controls">
   {!! Form::text('name_product',null, ['class' => 'form-control']) !!}
 </div>
@@ -9,9 +9,13 @@
     </span>
   @endif
 </div>
-
+<div>
+  <input type="hidden" name="productimage" value="@if(!empty($product))
+  {{$product->image}}
+  @endif">
+</div>
 <div class="form-group">
-{!! Form::label('description', 'description') !!}
+{!! Form::label('description', 'Description') !!}
 <div class="form-controls">
   {!! Form::textarea('description',null, ['class' => 'form-control']) !!}
 </div>
@@ -23,7 +27,7 @@
 </div>
 
 <div class="form-group">
-{!! Form::label('unit_price', 'unit_price') !!}
+{!! Form::label('unit_price', 'Giá bán') !!}
 <div class="form-controls">
   {!! Form::text('unit_price',null, ['class' => 'form-control']) !!}
 </div>
@@ -35,7 +39,7 @@
 </div>
 
 <div class="form-group">
-{!! Form::label('promotion_price', 'promotion_price') !!}
+{!! Form::label('promotion_price', 'Giá khuyễn mãi') !!}
 <div class="form-controls">
   {!! Form::text('promotion_price',null, ['class' => 'form-control']) !!}
 </div>
@@ -47,7 +51,7 @@
 </div>
 
 <div class="form-group">
-{!! Form::label('branch', 'branch') !!}
+{!! Form::label('branch', 'Branch') !!}
 <div class="form-controls">
   {!! Form::select('branch_id',$branch,null, ['class' => 'form-control']) !!}
 </div>
@@ -57,7 +61,26 @@
     </span>
   @endif
   </div>
+
+  @if(isset($branch))
+  <div>
+    <img id="output" src="/uploads/@if(isset($product)){{$product->image}} @endif " width="350" height="300" alt="image"/>
+  </div>
+  @endif
+
   <div class="form-group">
+  {!! Form::label('image', 'Image') !!}
+  <div class="form-controls">
+    {!! Form::file('image',null, ['class' => 'form-control']) !!}
+  </div>
+  @if ( $errors->has('image') )
+    <span class="text-danger">
+        <strong> {{ $errors->first('image') }}</strong>
+    </span>
+  @endif
+
+
+  <!-- <div class="form-group">
   {!! Form::label('image', 'Image') !!}
   <div class="form-controls">
     {!! Form::file('image',null, ['class' => 'form-control']) !!}
