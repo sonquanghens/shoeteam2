@@ -46,8 +46,6 @@
   							<td class="product-price">
   								<span class="amount">{{number_format($row->price, 0,'','.').' VNĐ'}}</span>
   							</td>
-
-
   							<td class="product-quantity">
 									<?php $rowId = (string)$row->rowId ?>
 								<form>

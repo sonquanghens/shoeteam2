@@ -79,17 +79,4 @@
     </span>
   @endif
 
-
-  <!-- <div class="form-group">
-  {!! Form::label('image', 'Image') !!}
-  <div class="form-controls">
-    {!! Form::file('image',null, ['class' => 'form-control']) !!}
-  </div>
-  @if ( $errors->has('image') )
-    <span class="text-danger">
-        <strong> {{ $errors->first('image') }}</strong>
-    </span>
-  @endif
-  </div>
-
 {!! Form::submit('Save Product', ['class' => 'btn btn-primary']) !!}

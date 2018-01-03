@@ -35,34 +35,28 @@
                 </thead>
                 <tbody>
 	                @foreach ($orders as $order)
-										@foreach ($order->orderdetails as $item)
 		             <tr>
 		                  <td>{{ $order->id}}</td>
 		                  <td>{{ $order->date_order}}</td>
-		                  <td>{{ $order->note}}</td>
-		                  <td>{{ $item->address_recevie}} </td>
-		                  <td>{{ $item->ship_date}} </td>
-		                  <td>{{ $item->phone}} </td>
-		                  <td>{{ $item->name}} </td>
+		                  <td>@if($order->status == 1 )Đang xử lý @elseif($order->status == 2) Đã xử lý @else Đã Hủy  @endif</td>
+		                  <td>{{ $order->address_recevie}} </td>
+		                  <td>{{ $order->ship_date}} </td>
+		                  <td>{{ $order->phone}} </td>
+		                  <td>{{ $order->name_receiver}} </td>
 
 		                  <td>{{ App\User::find($order->user_id)->name}}</td>
-		                  @if( $order->note == 'in process')
+		                  @if( $order->status == 1)
 		                  <td style="text-align: center;">
-			                  <a href="{{ url('carts/manage/' . $order->id . '/cancel')}}">
+			                  <a href="{{ url('carts/manage/' . $order->id . '/cancel')}}" onclick="return xacnhan('Are you sure to want cancle')">
 			                  	Hủy
 			                  </a>
 			              </td>
 		                  @else
 		                  <td style="text-align: center; vertical-align: middle;">Không khả dụng</td>
 		                  @endif
-											@if( $order->note != 'cancelled')
 		                   <td><a href="{{ url('carts/manage/' . $order->id .'/detail') }}">Xem chi tiết</a></td>
-											@else
-											 <td style="text-align: center; vertical-align: middle;">Không khả dụng</td>
-											@endif
 	                </tr>
 										@endforeach
-	                @endforeach
                 </tbody>
              </table>
             </div>
