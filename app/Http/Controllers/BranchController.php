@@ -45,6 +45,13 @@ class BranchController extends Controller
       return view('user.page.show_branch', compact('branch', 'products','branch_name'));
     }
 
+    public function detailBranch()
+    {
+      $branchs = Branch::all();
+      dd($branchs);
+      return view('slider',compact('branchs'));
+    }
+
     public function Branch(){
       $branchs = Branch::paginate(25);
       return view('auth.admin.branch.branch_list',compact('branchs'));

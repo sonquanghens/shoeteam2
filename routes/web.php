@@ -13,10 +13,11 @@
 //index
 
 Route::get('/', 'ProductController@home');
-//Route::get('/search', 'ProductController@getSearch');
+Route::get('/search', 'ProductController@getSearch');
 Route::get('/products/{product}', 'ProductController@showProduct');
 Route::get('/products/branch/{name}', 'BranchController@getBranch');
 Route::get('/pricesearch', 'ProductController@PriceSearch');
+Route::get('/branch', 'BranchController@detailBranch');
 
 
 Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
@@ -31,7 +32,6 @@ Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
  Route::get('/branch/search', 'BranchController@search_branch');
  Route::put('branch/{branch}', 'BranchController@updateBranch');
  Route::get('/branch/{branch}/delete', 'BranchController@deleteBranch');
- Route::get('/search','BranchController@search');
  // end Branch
 
  Route::get('/users', 'UserController@index');
@@ -64,13 +64,14 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
 	Route::get('carts/manage/{id}/detail/export', 'OrderController@export_order_detail');
 
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
-  //order
-  Route::get('/order/checkout' , 'OrderController@getOrder')->middleware('auth');
-  Route::post('/order', 'OrderController@SaveOrder');
+  //order-admin
   Route::get('/order','OrderController@allOrder');
   Route::get('/search_order','OrderController@searchOrders');
-
 });
+
+//order
+Route::get('/order/checkout' , 'OrderController@getOrder')->middleware('auth');
+Route::post('/order', 'OrderController@SaveOrder');
 
 Auth::routes();
 

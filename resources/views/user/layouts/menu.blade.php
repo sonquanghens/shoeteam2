@@ -6,10 +6,11 @@
       <ul class="l-inline ov">
         <li><a href="{{ url('/') }}">Trang chủ</a></li>
         <li><a href="#">Sản phẩm</a>
+          <?php  $branchs = App\Branch::all();  ?>
           <ul class="sub-menu">
-            <li><a href="product_type.html">Sản phẩm 1</a></li>
-            <li><a href="product_type.html">Sản phẩm 2</a></li>
-            <li><a href="product_type.html">Sản phẩm 4</a></li>
+            @foreach($branchs as $branch)
+            <li><a href="{{ url('/branchs/').'/'.$branch->id }}">{{ $branch->name }}</a></li>
+            @endforeach
           </ul>
         </li>
         <li><a href="#">Giới thiệu</a></li>

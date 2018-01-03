@@ -13,7 +13,6 @@
                {!! Form::close() !!}
           </div>
       </div>
-
   <!-- /. PAGE INNER  -->
   </div>
 @stop

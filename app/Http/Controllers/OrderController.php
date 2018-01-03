@@ -58,10 +58,11 @@ class OrderController extends Controller
            $product = Product::find($item->id);
            $product->update(['count' => $product->count + 1]);
        }
+       $items = OrderDetail::where('order_id', '=', $order->id)->get();
        Cart::destroy();
-       return redirect('carts/manage');
-    } 
-  
+       return view('user.shop.manage-detail')->with('items', $items);
+    }
+
     Public function allOrder()
     {
         $orders = Order::paginate(10);
@@ -151,8 +152,6 @@ class OrderController extends Controller
 
     }
 
-      
-
       public function getOrder()
       {
         //dd(Cart::content());
@@ -169,7 +168,7 @@ class OrderController extends Controller
       public function cancel($id)
       {
           $order = Order::find($id);
-          $order->update(['note' => 'not process']);
+          $order->update(['status' => 3]);
           return redirect('carts/manage');
       }
 
@@ -196,12 +195,4 @@ class OrderController extends Controller
          $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items]);
          return $pdf->stream('order-detail.pdf');
       }
-
-
-
-
-        
-      
-    }
-
 }
