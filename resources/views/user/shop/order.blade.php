@@ -2,6 +2,7 @@
 @section('content')
 @include('user.layouts.pays_step')
 <div class="container">
+	@if(\Cart::count() > 0)
 		<div id="content">
 			<form action="{{ url('/order') }}" method="post" class="beta-form-checkout">
 				  {{ csrf_field() }}
@@ -118,5 +119,13 @@
 				</div>
 			</form>
 		</div>
+		@else
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+					<h3>Không có sản phẩm nào trong giỏ hàng</h3>
+					<p style="text-align:center;margin-top:12px;"><a class="btn btn-primary btn-lg"  href="{{url('/')}}" role="button">Tiến tục mua hàng</a></p>
+			</div>
+		</div>
+		@endif
 </div>    <!-- #content -->
 @stop

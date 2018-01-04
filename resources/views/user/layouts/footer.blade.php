@@ -24,7 +24,7 @@
      <div class="col-sm-4">
       <div class="col-sm-10">
        <div class="widget">
-         <h4 class="widget-title">Contact Us</h4>
+         <h4 class="widget-title">DỊCH VỤ GIAO HÀNG</h4>
          <div>
            <div class="contact-info">
              <i class="fa fa-map-marker"></i>

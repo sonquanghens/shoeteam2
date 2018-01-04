@@ -28,7 +28,10 @@
                       <a href="{{ url('/products/').'/'.$product->id }}"><img src="/uploads/{{ $product->image }}" width="270" height="320" alt=""></a>
                     </div>
                     <div class="single-item-body">
-                      <p class="single-item-title"><a href="{{ url('/products/').'/'.$product->id }}">{{ $product->name_product }} - {{ $product->branch->name }}</a></p>
+                      <p class="single-item-title">
+                        <a href="{{ url('/products/').'/'.$product->id }}">{{ $product->name_product }}
+                        </a>
+                      </p>
                       <a href="{{ url('/products/').'/'.$product->id }}">
                       <p class="single-item-price">
                       @if($product->promotion_price > 0)
@@ -81,7 +84,7 @@
                       <a href="{{ url('/products/').'/'.$product->id }}"><img src="/uploads/{{ $product->image }}" width="270" height="320" alt=""></a>
                     </div>
                     <div class="single-item-body">
-                      <p class="single-item-title"><a href="{{ url('/products/').'/'.$product->id }}">{{ $product->name_product }} - {{ $product->branch->name }}</a></p>
+                      <p class="single-item-title"><a href="{{ url('/products/').'/'.$product->id }}">{{ $product->name_product }}</a></p>
                       <a href="{{ url('/products/').'/'.$product->id }}">
                       <p class="single-item-price">
                       @if($product->promotion_price > 0)

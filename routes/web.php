@@ -14,10 +14,10 @@
 
 Route::get('/', 'ProductController@home');
 Route::get('/search', 'ProductController@getSearch');
+Route::get('/products/new', 'ProductController@newProduct');
 Route::get('/products/{product}', 'ProductController@showProduct');
 Route::get('/products/branch/{name}', 'BranchController@getBranch');
 Route::get('/pricesearch', 'ProductController@PriceSearch');
-Route::get('/branch', 'BranchController@detailBranch');
 
 
 Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
@@ -36,7 +36,16 @@ Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
 
  Route::get('/users', 'UserController@index');
  Route::get('/users/search', 'UserController@searchUser');
- Route::get('/search/price', 'UserController@store');
+ Route::get('/users/order/{user}', 'UserController@OrdersList');
+ Route::get('/users/order/{id}/detail' , 'UserController@detail');
+
+ //slider
+ Route::get('/slide/list_slide', 'SlideController@listSlide');
+ Route::get('/slide/create', 'SlideController@createSlide');
+ Route::post('/slide', 'SlideController@saveSlide');
+ Route::get('/slide/{slide}/edit', 'SlideController@editSlide');
+ Route::put('slide/{slide}', 'SlideController@updateSlide');
+ Route::get('/slide/{slide}/delete', 'SlideController@deleteSlide');
 });
 
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
