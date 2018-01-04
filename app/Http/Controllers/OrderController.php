@@ -195,4 +195,54 @@ class OrderController extends Controller
          $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items]);
          return $pdf->stream('order-detail.pdf');
       }
+      //searchdonebutton
+      public function searchNoteDone()
+      {
+            $note = "DONE";
+            $noteUpercase = Str::lower($note);
+            // dd($noteUpercase);
+            $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
+                                ->where('note','LIKE','%'.$note.'%')
+                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->paginate(10);
+            $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
+                                ->where('note','LIKE','%'.$note.'%')
+                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->get();
+                                  // dd($sum_orders);
+
+            $sum_total =0;
+                    foreach ($sum_orders as $key => $order) {
+                            $sum_total = $sum_total + $order->total;
+                      }
+            return view('auth.admin.order.list_order',compact('orders','sum_total' ));
+      }
+      //searchnoteInprocess
+      public function searchnoteInprocess()
+      {
+            $note = "IN PROCESS";
+            $noteUpercase = Str::lower($note);
+            // dd($noteUpercase);
+            $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
+                                ->where('note','LIKE','%'.$note.'%')
+                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->paginate(10);
+            $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
+                                ->where('note','LIKE','%'.$note.'%')
+                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->get();
+                                  // dd($sum_orders);
+
+            $sum_total =0;
+                    foreach ($sum_orders as $key => $order) {
+                            $sum_total = $sum_total + $order->total;
+                      }
+            return view('auth.admin.order.list_order',compact('orders','sum_total' ));
+      }
+      public function detelOrder($order)
+      {
+        $items = OrderDetail::where('order_id', '=', $order)->get();
+        $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items]);
+        return $pdf->stream('order-detail.pdf');
+      }
 }

@@ -12,15 +12,17 @@
             <div class="input-group" style="float: right;    margin-top: 19px;">
               <!-- //form seach -->
               <form class="navbar-form navbar-left" action="/admin/search_order" role="search" method="GET" >
+                <a href="{{url('/admin/order/done')}}"><button type="button"  class="btn-info btn-sm">Done</button></a>
+                <a href="{{url('/admin/order/in')}}"><button type="button" class="btn-info btn-sm" name="note">in process</button></a>
                 {!!Form::label('From', null, ['class' => 'form-control'])!!}
                 {!! Form::date('date_start', null, ['class' => 'form-control']) !!}
                 {!!Form::label('to', null, ['class' => 'form-control'])!!}
                 {!! Form::date('date_end', null, ['class' => 'form-control']) !!}
-                {!!Form::label('Details', null, ['class' => 'form-control'])!!}
+                <!-- {!!Form::label('Details', null, ['class' => 'form-control'])!!} -->
                 <div class="form-group">
                   <input type="text" class="form-control" name="search_order"  value="{{ isset($_GET['search_order']) ? $_GET['search_order'] : '' }}">
                   &nbsp;&nbsp;&nbsp;
-                  <button type="submit"  class="btn btn-info">sreach</button>
+                  <button type="submit"  class="btn-info btn-sm">sreach</button>
                 </div>
               </form>
           </div>
@@ -41,9 +43,9 @@
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 132px;">Total
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 132px;">Pay Ment
-                                </th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">Note
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">detail
                                 </th>
                                 <!-- <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Delete: activate to sort column ascending" style="width: 113px;">Delete</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Edit: activate to sort column ascending" style="width: 87px;">Edit</th> -->
@@ -61,10 +63,11 @@
                                     {{ $order->user->name }}
                                     @endif
                                   </td>
-                                  <td>{{ $order->date_order }}</td>
+                                  <td>{{ $order->date_order->format('d/m/Y') }}</td>
                                   <td>{{number_format ($order->total, 0,'','.') }}</td>
-                                  <td>{{ $order->payment }}</td>
                                   <td>{{ $order->note }}</td>
+                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/detail'.'/'.$order->id.'')}}"><i class="fa fa-pencil fa-fw"></i>order_tail</button></td>
+
 <!--
                                   <td class="center"><a  class="btn-danger btn-sm" href="{{url('/admin/product'.'/'.$order->id.'/delete')}}" onclick="return xacnhan('Are you sure to want DELETE')"><i class="fa fa-trash-o  fa-fw"></i>Delete</button></td>
                                   <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/product'.'/'.$order->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i>Edit</button></td> -->
