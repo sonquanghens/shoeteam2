@@ -76,6 +76,11 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
   //order-admin
   Route::get('/order','OrderController@allOrder');
   Route::get('/search_order','OrderController@searchOrders');
+  Route::get('order/done','OrderController@searchNoteDone');
+  Route::get('order/in','OrderController@searchnoteInprocess');
+  Route::get('detail/{order}','OrderController@detelOrder');
+
+
 });
 
 //order

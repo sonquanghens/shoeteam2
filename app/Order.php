@@ -8,6 +8,8 @@ class Order extends Model
 {
   protected $fillable = ['user_id','date_order' ,'total','name_receiver','phone','address_recevie','ship_date','note','status'];
   protected $table='orders';
+  protected $dates = ['date_order'];
+
 
   public function orderdetails()
   {
