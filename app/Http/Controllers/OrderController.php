@@ -16,6 +16,7 @@ use DateTime;
 use Auth;
 use Excel;
 use PDF;
+use App\User;
 
 class OrderController extends Controller
 {
@@ -192,7 +193,8 @@ class OrderController extends Controller
       public function export_order_detail($order)
       {
          $items = OrderDetail::where('order_id', '=', $order)->get();
-         $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items]);
+         $orders = Order::where('id','=',$order)->get();
+         $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items,'orders' => $orders]);
          return $pdf->stream('order-detail.pdf');
       }
 }

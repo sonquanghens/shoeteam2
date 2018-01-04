@@ -106,7 +106,7 @@
           </div>
 			 <!-- best sellers widget -->
 					<div class="widget">
-						<h3 class="widget-title">Sản Phẩm Mới</h3>
+						<h3 class="widget-title"><a href="{{url('/products/new')}}">Sản Phẩm Mới</a></h3>
 						<div class="widget-body">
 							<div class="beta-sales beta-lists">
                 @foreach($allproduct as $product)
