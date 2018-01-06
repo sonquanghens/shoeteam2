@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->date('date_order');
+            $table->date('date_order')->nullable();;
             $table->double('total')->unsigned();
             $table->string('name_receiver');
             $table->string('phone');

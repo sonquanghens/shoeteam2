@@ -77,9 +77,9 @@ class OrderController extends Controller
       $order = Input::get ( 'search_order' );
       $note = Input::get ( 'note' );
       $orderUpercase = Str::lower($order);
-      // dd(empty($note));
+      // dd($date_start);
       if (!empty($note)) {
-        //there are not date_end and date_start , but there is Name_search
+        //there are Search with note
         $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
                             ->where('note','LIKE','%'.$note.'%')
                             ->where('users.name','LIKE','%'.$order.'%')
@@ -97,7 +97,7 @@ class OrderController extends Controller
           foreach ($sum_orders as $key => $order) {
               $sum_total = $sum_total + $order->total;
           }
-            return view('auth.admin.order.list_order',compact('orders','sum_total' ));
+            return view('auth.admin.order.list_order',compact('orders','sum_total','date' ));
       }
       else {
         if(empty($date_start) && empty($date_end))
