@@ -4,31 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "0b9b04e49a495d45ac717755dfc4206e",
-    "packages": [
-        {
-            "name": "consoletvs/charts",
-            "version": "5.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ConsoleTVs/Charts.git",
-                "reference": "353039ae19488c0ddd33213f5506548ef8b77558"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/353039ae19488c0ddd33213f5506548ef8b77558",
-                "reference": "353039ae19488c0ddd33213f5506548ef8b77558",
-                "shasum": ""
-            },
-            "require": {
-                "consoletvs/support": "^2.1.2",
-                "illuminate/support": "5.*",
-                "jenssegers/date": "v3.*",
-                "jlawrence/eos": "3.*",
-                "php": ">=7.0.0"
-=======
-    "content-hash": "d8b56485afd0425bdec8d8dc0185ff51",
+    "content-hash": "a3f9f8c5ce1e01ef532f55ec8eff9508",
     "packages": [
         {
             "name": "aloha/twilio",
@@ -53,33 +29,21 @@
                 "illuminate/console": "~4||~5",
                 "illuminate/support": "~4||~5",
                 "phpunit/phpunit": "~4.5"
->>>>>>> 7fd81eb16bc165942a276801c4d035ec3c9726c8
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-<<<<<<< HEAD
-                        "ConsoleTVs\\Charts\\ChartsServiceProvider"
-                    ],
-                    "aliases": {
-                        "Charts": "ConsoleTVs\\Charts\\Facades\\Charts"
-=======
                         "Aloha\\Twilio\\Support\\Laravel\\ServiceProvider"
                     ],
                     "aliases": {
                         "Twilio": "Aloha\\Twilio\\Support\\Laravel\\Facade"
->>>>>>> 7fd81eb16bc165942a276801c4d035ec3c9726c8
                     }
                 }
             },
             "autoload": {
                 "psr-4": {
-<<<<<<< HEAD
-                    "ConsoleTVs\\Charts\\": "src/"
-=======
                     "Aloha\\Twilio\\": "src/"
->>>>>>> 7fd81eb16bc165942a276801c4d035ec3c9726c8
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -88,7 +52,67 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
+                    "name": "Hannes Van De Vreken",
+                    "email": "vandevreken.hannes@gmail.com"
+                },
+                {
+                    "name": "Travis J Ryan",
+                    "email": "travisjryan@gmail.com"
+                }
+            ],
+            "description": "Twilio API for Laravel",
+            "homepage": "https://github.com/aloha/laravel-twilio",
+            "keywords": [
+                "ivr",
+                "laravel",
+                "sms",
+                "twilio"
+            ],
+            "time": "2017-10-05T06:31:47+00:00"
+        },
+        {
+            "name": "consoletvs/charts",
+            "version": "5.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Charts.git",
+                "reference": "353039ae19488c0ddd33213f5506548ef8b77558"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/353039ae19488c0ddd33213f5506548ef8b77558",
+                "reference": "353039ae19488c0ddd33213f5506548ef8b77558",
+                "shasum": ""
+            },
+            "require": {
+                "consoletvs/support": "^2.1.2",
+                "illuminate/support": "5.*",
+                "jenssegers/date": "v3.*",
+                "jlawrence/eos": "3.*",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ConsoleTVs\\Charts\\ChartsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Charts": "ConsoleTVs\\Charts\\Facades\\Charts"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ConsoleTVs\\Charts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
                     "name": "Erik Campobadal",
                     "email": "soc@erik.cat"
                 }
@@ -142,25 +166,6 @@
             ],
             "description": "ConsoleTVs support library",
             "time": "2017-12-15T07:30:36+00:00"
-=======
-                    "name": "Hannes Van De Vreken",
-                    "email": "vandevreken.hannes@gmail.com"
-                },
-                {
-                    "name": "Travis J Ryan",
-                    "email": "travisjryan@gmail.com"
-                }
-            ],
-            "description": "Twilio API for Laravel",
-            "homepage": "https://github.com/aloha/laravel-twilio",
-            "keywords": [
-                "ivr",
-                "laravel",
-                "sms",
-                "twilio"
-            ],
-            "time": "2017-10-05T06:31:47+00:00"
->>>>>>> 7fd81eb16bc165942a276801c4d035ec3c9726c8
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3202,29 +3207,6 @@
             "time": "2016-09-20T12:50:39+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "umpirsky/language-list",
-            "version": "v1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/umpirsky/language-list.git",
-                "reference": "3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/umpirsky/language-list/zipball/3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c",
-                "reference": "3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "symfony/locale": "^2.7|^3.0",
-                "umpirsky/list-generator": "^1.1"
-            },
-            "type": "library",
-=======
             "name": "twilio/sdk",
             "version": "4.12.1",
             "source": {
@@ -3251,21 +3233,12 @@
                     "Services/Twilio.php"
                 ]
             },
->>>>>>> 7fd81eb16bc165942a276801c4d035ec3c9726c8
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-<<<<<<< HEAD
-                    "name": "Saša Stamenković",
-                    "email": "umpirsky@gmail.com"
-                }
-            ],
-            "description": "List of all languages with names and ISO 639-1 codes in all languages and all data formats.",
-            "time": "2016-09-26T14:12:15+00:00"
-=======
                     "name": "Kevin Burke",
                     "email": "kevin@twilio.com"
                 },
@@ -3282,7 +3255,41 @@
                 "twilio"
             ],
             "time": "2017-11-17T22:59:03+00:00"
->>>>>>> 7fd81eb16bc165942a276801c4d035ec3c9726c8
+        },
+        {
+            "name": "umpirsky/language-list",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/umpirsky/language-list.git",
+                "reference": "3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/umpirsky/language-list/zipball/3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c",
+                "reference": "3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "symfony/locale": "^2.7|^3.0",
+                "umpirsky/list-generator": "^1.1"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saša Stamenković",
+                    "email": "umpirsky@gmail.com"
+                }
+            ],
+            "description": "List of all languages with names and ISO 639-1 codes in all languages and all data formats.",
+            "time": "2016-09-26T14:12:15+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4311,16 +4318,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "5.0.5",
+            "version": "5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "283b9f4f670e3a6fd6c4ff95c51a952eb5c75933"
+                "reference": "33fd41a76e746b8fa96d00b49a23dadfa8334cdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/283b9f4f670e3a6fd6c4ff95c51a952eb5c75933",
-                "reference": "283b9f4f670e3a6fd6c4ff95c51a952eb5c75933",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/33fd41a76e746b8fa96d00b49a23dadfa8334cdf",
+                "reference": "33fd41a76e746b8fa96d00b49a23dadfa8334cdf",
                 "shasum": ""
             },
             "require": {
@@ -4366,7 +4373,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2017-12-10T08:01:53+00:00"
+            "time": "2018-01-06T05:45:45+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
