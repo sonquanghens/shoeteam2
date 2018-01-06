@@ -14,6 +14,8 @@
               <form class="navbar-form navbar-left" action="/admin/search_order" role="search" method="GET" >
                 <!-- <a href="{{url('/admin/order/done')}}"><button type="button"  class="btn-info btn-sm">Done</button></a>
                 <a href="{{url('/admin/order/in')}}"><button type="button" class="btn-info btn-sm" name="note">in process</button></a> -->
+                <!-- {!! Form::select('date',$date,null, ['class' => 'form-control']) !!} -->
+
                 {!!Form::label('Note', null, ['class' => 'form-control'])!!}
                  {!! Form::select('note',
                      [
