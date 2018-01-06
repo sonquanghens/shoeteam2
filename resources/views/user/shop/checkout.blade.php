@@ -82,7 +82,7 @@
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
 						<h3>Không có sản phẩm nào trong giỏ hàng</h3>
-						<p style="text-align:center;margin-top:12px;"><a class="btn btn-primary btn-lg"  href="{{URL::previous()}}" role="button">Tiến tục mua hàng</a></p>
+						<p style="text-align:center;margin-top:12px;"><a class="btn btn-primary btn-lg"  href="{{url('/')}}" role="button">Tiến tục mua hàng</a></p>
 				</div>
 			</div>
 			@endif

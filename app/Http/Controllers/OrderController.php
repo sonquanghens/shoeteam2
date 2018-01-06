@@ -16,6 +16,7 @@ use DateTime;
 use Auth;
 use Excel;
 use PDF;
+use App\User;
 
 class OrderController extends Controller
 {
@@ -74,27 +75,30 @@ class OrderController extends Controller
       $date_start = $request->Input('date_start');
       $date_end = $request->Input('date_end');
       $order = Input::get ( 'search_order' );
-      $orderUpercase = Str::lower($order);
       $note = Input::get ( 'note' );
-    // \Twilio::message('+84' . Auth::user()->phone_number,'ban vua dat hang giay xong ' );
+      $orderUpercase = Str::lower($order);
+// \Twilio::message('+84' . Auth::user()->phone_number,'ban vua dat hang giay xong ' );
+      // dd($date_start);
       if (!empty($note)) {
+        //there are Search with note
         $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                            ->where('users.name','LIKE','%'.$order.'%')
                             ->where('note','LIKE','%'.$note.'%')
-                            ->where('date_order', '>=', $date_start )
-                            ->where('date_order', '<=', $date_end )
+                            ->where('users.name','LIKE','%'.$order.'%')
+                            ->where('date_order', '>=', $date_start)
+                            ->where('date_order', '<=', $date_end)
                             ->paginate(10);
         $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                            ->where('users.name','LIKE','%'.$order.'%')
                             ->where('note','LIKE','%'.$note.'%')
+                            ->where('users.name','LIKE','%'.$order.'%')
+                            ->where('date_order', '>=', $date_start)
+                            ->where('date_order', '<=', $date_end)
                             ->get();
                             // dd($sum_orders);
-
              $sum_total =0;
           foreach ($sum_orders as $key => $order) {
               $sum_total = $sum_total + $order->total;
           }
-            return view('auth.admin.order.list_order',compact('orders','sum_total' ));
+            return view('auth.admin.order.list_order',compact('orders','sum_total','date' ));
       }
       else {
         if(empty($date_start) && empty($date_end))
@@ -171,8 +175,10 @@ class OrderController extends Controller
           }
           return view('auth.admin.order.list_order',compact('orders','sum_total'));
         }
-      }
 
+
+
+      }
     }
 
       public function getOrder()
@@ -215,7 +221,8 @@ class OrderController extends Controller
       public function export_order_detail($order)
       {
          $items = OrderDetail::where('order_id', '=', $order)->get();
-         $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items]);
+         $orders = Order::where('id','=',$order)->get();
+         $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items,'orders' => $orders]);
          return $pdf->stream('order-detail.pdf');
       }
       //searchdonebutton

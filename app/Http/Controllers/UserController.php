@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Order;
+use App\OrderDetail;
 class UserController extends Controller
 {
     /**
@@ -85,7 +87,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        
+
     }
 
     public function searchUser(Request $request)
@@ -94,5 +96,18 @@ class UserController extends Controller
                     ->orWhere('phone_number','=',$request->search_user)
                     ->orWhere('email','=',$request->search_user)->paginate(15);
       return view('auth.admin.user.search_user',compact('users'));
+    }
+
+    public function OrdersList(User $user)
+    {
+      $order = Order::where('user_id','=',$user->id)->paginate(15);
+
+      return view('auth.admin.user.list_order',compact('order'));
+    }
+
+    public function detail($id)
+    {
+        $items = OrderDetail::where('order_id', '=', $id)->get();
+        return view('auth.admin.user.detail_order')->with('items', $items);
     }
 }

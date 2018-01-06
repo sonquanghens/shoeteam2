@@ -46,7 +46,7 @@
                 </ul> -->
             </li>
             <li>
-                <a href="blank.html"><i class="fa fa-dashcube "></i>Blank Page</a>
+                <a href="{{ url('/admin/slide/list_slide') }}"><i class="fa fa-dashcube "></i>Slide Page</a>
             </li>
 
         </ul>

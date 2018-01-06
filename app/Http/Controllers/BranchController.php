@@ -40,16 +40,8 @@ class BranchController extends Controller
       $branch_name = $name;
       $branch = Branch::all();
       $products = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
-        ->where('branchs.name','=',$name)->select('products.*')->paginate(25);
-
+        ->where('branchs.name','=',$name)->select('products.*')->orderBy('products.id','desc')->paginate(25);
       return view('user.page.show_branch', compact('branch', 'products','branch_name'));
-    }
-
-    public function detailBranch()
-    {
-      $branchs = Branch::all();
-      dd($branchs);
-      return view('slider',compact('branchs'));
     }
 
     public function Branch(){

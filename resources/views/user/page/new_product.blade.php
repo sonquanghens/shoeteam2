@@ -46,7 +46,10 @@
             <h4 style="margin-bottom: 20px;">SẢN PHẨM MỚI </h4>
             <div class="row" id="data">
                   @foreach($products as $value)
-                    <div class="col-sm-4" >
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"  style="
+    margin-top: 10px;
+    margin-bottom: 10px;
+">
                       <div class="single-item">
                         @if($value->promotion_price > 0)
                         <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
@@ -56,7 +59,7 @@
                         </div>
                         <div class="single-item-body">
                           <p class="single-item-title">
-                            <a href="{{ url('/products/').'/'.$value->id }}">{{ $value->name_product }} - {{ $value->branch->name }}
+                            <a href="{{ url('/products/').'/'.$value->id }}">{{ $value->name_product }}
                             </a>
                           </p>
                           <a href="{{ url('/products/').'/'.$value->id }}">
@@ -73,8 +76,6 @@
                     </div>
                   @endforeach
                 <div class="row">{{ $products->links() }}</div>
-
-                <div class="space50">&nbsp;</div>
               </div>
             </div>
           </div> <!-- .beta-products-list -->
