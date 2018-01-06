@@ -168,6 +168,9 @@ return [
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Aloha\Twilio\Support\Laravel\ServiceProvider::class,
+
+
 
 
         /*
@@ -237,6 +240,7 @@ return [
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Twilio'  =>  Aloha\Twilio\Support\Laravel\Facade::class ,
 
 
     ],

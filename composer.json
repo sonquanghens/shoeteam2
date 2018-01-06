@@ -6,7 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+<<<<<<< HEAD
         "consoletvs/charts": "^5.4",
+=======
+        "aloha/twilio": "^3.0",
+>>>>>>> 7fd81eb16bc165942a276801c4d035ec3c9726c8
         "fideloper/proxy": "~3.3",
         "gloudemans/shoppingcart": "^2.4",
         "illuminate/pagination": "^5.5",
