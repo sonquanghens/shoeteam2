@@ -12,15 +12,17 @@
             <div class="input-group" style="float: right;    margin-top: 19px;">
               <!-- //form seach -->
               <form class="navbar-form navbar-left" action="/admin/search_order" role="search" method="GET" >
+              
+
                 {!!Form::label('Note', null, ['class' => 'form-control'])!!}
-                {!! Form::select('note',
-                  [
-                     ''      => '',
-                     'Done'        => 'Done',
-                     'in process'        => 'in process',
-                 ]
-                 , null, [ 'class' =>  'form-control',])
-                !!}
+                 {!! Form::select('note',
+                     [
+                         ''  =>  '',
+                        'Done'      => 'Done',
+                        'in process'        => 'In Process',
+                    ]
+                    , null, [ 'class' =>  'form-control',])
+                 !!}
                 {!!Form::label('From', null, ['class' => 'form-control'])!!}
                 {!! Form::date('date_start', null, ['class' => 'form-control']) !!}
                 {!!Form::label('to', null, ['class' => 'form-control'])!!}

@@ -77,3 +77,13 @@
 	</section>
 	@endif
 @stop
+@section('script')
+	<script>
+	function xacnhan(msg) {
+		if (window.confirm(msg)) {
+			return true;
+		}
+		return false;
+	}
+	</script>
+@stop

@@ -4,10 +4,34 @@
     <meta charset="utf-8">
 </head><!--/head-->
 <body>
-<h1 style="text-align:center;">Order Detail</h1>
+<h1 style="text-align:center;">CHI TIẾT HÓA ĐƠN</h1>
   <div>
-    <h4>Thông tin khách hàng</h4>
+    <h4 style="margin-bottom:0px;">Thông tin khách hàng</h4>
+    <div>
+        @foreach($orders as $value)
+        <?php $user = App\User::find($value->user_id);  ?>
+          <p style="margin-bottom:0px;width:50%;float:left;">
+            Họ tên người đặt : <span style="float: right;margin-right: 60%;">{{$user->name }}</span>
+          </p>
+          <p style="margin-top: 0px;margin-bottom:  0px;width:50%;float:left;">
+            Họ tên người nhận : <span style="float: right;margin-right: 60%;">{{$value->name_receiver }}</span>
+          </p>
+          <p style="margin-top: 0px;margin-bottom:  0px;width:50%;float:left;">
+            Địa Chỉ : <span style="float: right;margin-right: 60%;">{{$value->address_recevie }}</span>
+          </p>
+          <p style="margin-top: 0px;margin-bottom:  0px;width:50%;float:left;">
+            Số Điện Thoại : <span style="float: right;margin-right: 60%;">{{$value->phone }}</span>
+          </p>
+          <p style="margin-top: 0px;margin-bottom:  0px;width:50%;float:left;">
+            Ngày Đặt Hàng : <span style="float: right;margin-right: 60%;">{{$value->date_order }}</span>
+          </p>
+          <p style="margin-top: 0px;width:50%;float:left;">
+            Ngày Ship : <span style="float: right;margin-right: 60%;">{{$value->ship_date }}</span>
+          </p>
+        @endforeach
+    </div>
   </div>
+
   <div class="box-body">
 	  <table  id="example2" style="border: 1px solid #ddd;width: 100%;
     margin-bottom: 20px;border-collapse: collapse;

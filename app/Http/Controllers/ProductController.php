@@ -14,6 +14,7 @@ class ProductController extends Controller
        $topproduct = Product::orderBy('count','desc')->skip(0)->take(4)->get();
        return view('user.page.contents', compact('products','topproduct'));
      }
+
      public function getSearch(Request $req)
      {
        if($req->key!=null)
@@ -27,6 +28,7 @@ class ProductController extends Controller
          $branch = Branch::all();
          return view('user.page.search',compact('products','branch'));
      }
+
      public function showProduct(Product $product)
      {
         // dd($product->id);
@@ -38,60 +40,70 @@ class ProductController extends Controller
         $allproduct = Product::orderBy('id','desc')->skip(0)->take(4)->get();
         return view('user.page.show_product_details',compact('product','items','topproduct','allproduct'));
      }
+
      public function PriceSearch(Request $request)
      {
        $pricesearch=Input::get();
        switch ($pricesearch['pricesearch'])
        {
            case 1:
-               $products = Product::where('unit_price','<=',500000)->paginate(15);
+               $products = Product::where('unit_price','<=',150000)->paginate(15);
                $branch = Branch::all();
                 //dd($product);
                return view('user.page.search',compact('products','branch'));
                break;
            case 2:
-               $products=Product::where('unit_price','>',400000)->where('unit_price','<=',1000000)->paginate(15);
+               $products=Product::where('unit_price','>',150000)->where('unit_price','<=',400000)->paginate(15);
                $branch = Branch::all();
                return view('user.page.search',compact('products','branch'));
                break;
            case 3:
-               $products=Product::where('unit_price','>',1000000)->where('unit_price','<=',1400000)->paginate(15);
+               $products=Product::where('unit_price','>',400000)->where('unit_price','<=',800000)->paginate(15);
                $branch = Branch::all();
                return view('user.page.search',compact('products','branch'));
                break;
            case 4:
-               $products=Product::where('unit_price','>',300)->where('unit_price','<=',500)->paginate(15);
+               $products=Product::where('unit_price','>',800000)->where('unit_price','<=',1200000)->paginate(15);
                $branch = Branch::all();
                return view('user.page.search',compact('products','branch'));
                break;
            case 5:
-               $products=Product::where('unit_price','>=',500)->paginate(15);
+               $products=Product::where('unit_price','>',1200000)->where('unit_price','<=',1600000)->paginate(15);
                $branch = Branch::all();
                return view('user.page.search',compact('products','branch'));
                break;
+          case 6 :
+                $products=Product::where('unit_price','>=',1600000)->paginate(15);
+                $branch = Branch::all();
+                return view('user.page.search',compact('products','branch'));
        }
      }
+
      public function allProduct()
      {
         $products = Product::all();
         return view('auth.admin.product.list_product', compact('products'));
      }
+
      public function delete(Product $product)
      {
        unlink(public_path('/uploads/'.$product->image));
        $product->delete();
-       return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Delete Branch');
+       return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Delete Product');
      }
+
      public function editProduct(Product $product)
      {
          $branch = Branch::all()->pluck('name','id');
          return view('auth.admin.product.edit_product',compact('product' ,'branch'));
      }
+
      public function create()
      {
           $branch = Branch::all()->pluck('name','id');
           return view('auth.admin.product.create_product',compact('branch'));
      }
+
      public function addProduct(EditProductRequest $request)
      {
           $data = $request->all();
@@ -110,6 +122,7 @@ class ProductController extends Controller
           }
             return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Create Branch');
      }
+
      public function updateProduct(EditProductRequest $request,Product $product)
      {
           $data = $request->all();
@@ -128,6 +141,7 @@ class ProductController extends Controller
           }
             return redirect('/admin/product/list_product')->withSuccess('Success !! Complete Update Product');
      }
+
      public function search_product(Request $request)
      {
        $products = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
@@ -135,5 +149,12 @@ class ProductController extends Controller
                            ->orWhere('branchs.name','like','%'.$request->search_product.'%')
                            ->paginate(15);
         return view('auth.admin.product.product_search',compact('products'));
+     }
+
+     public function newProduct()
+     {
+       $products = Product::orderBy('id','desc')->paginate(9);
+       $branch = Branch::all();
+       return view('user.page.new_product', compact('products','branch'));
      }
 }

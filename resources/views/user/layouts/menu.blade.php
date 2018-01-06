@@ -9,7 +9,7 @@
           <?php  $branchs = App\Branch::all();  ?>
           <ul class="sub-menu">
             @foreach($branchs as $branch)
-            <li><a href="{{ url('/branchs/').'/'.$branch->id }}">{{ $branch->name }}</a></li>
+            <li><a href="{{ url('/products/branch/').'/'.$branch->name }}">{{ $branch->name }}</a></li>
             @endforeach
           </ul>
         </li>
