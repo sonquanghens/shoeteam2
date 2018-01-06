@@ -77,6 +77,7 @@ class OrderController extends Controller
       $order = Input::get ( 'search_order' );
       $note = Input::get ( 'note' );
       $orderUpercase = Str::lower($order);
+// \Twilio::message('+84' . Auth::user()->phone_number,'ban vua dat hang giay xong ' );
       // dd($date_start);
       if (!empty($note)) {
         //there are Search with note
@@ -174,6 +175,7 @@ class OrderController extends Controller
           }
           return view('auth.admin.order.list_order',compact('orders','sum_total'));
         }
+
 
 
       }
