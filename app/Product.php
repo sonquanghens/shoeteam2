@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-   protected $fillable = ['name_product','branch_id','description','unit_price','promotion_price','image','count','size'];
+   use SoftDeletes;
+   protected $fillable = ['name_product','branch_id','description','unit_price','promotion_price','image','count','status','size'];
    protected $table='products';
+   protected $dates = ['deleted_at'];
 
    public function branch()
    {

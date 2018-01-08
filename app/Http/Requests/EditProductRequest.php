@@ -25,8 +25,8 @@ class EditProductRequest extends FormRequest
     {
         return [
           'image' => 'mimes:jpeg,bmp,png',
-          'promotion_price' => 'required',
-          'unit_price' => 'required',
+          'promotion_price' => 'required|numeric',
+          'unit_price' => 'required|numeric',
           'description' => ' required',
           'name_product' => 'required'
         ];

@@ -16,8 +16,8 @@ use DateTime;
 use Auth;
 use Excel;
 use PDF;
-use App\User;
 use Twilio;
+use App\User;
 class OrderController extends Controller
 {
     public function SaveOrder(CustomerRequests $request)
@@ -60,6 +60,8 @@ class OrderController extends Controller
            $product->update(['count' => $product->count + 1]);
        }
        $items = OrderDetail::where('order_id', '=', $order->id)->get();
+
+       Twilio::message('+84'.Auth::user()->phone_number, 'ban vua dat mot don hang');
        Cart::destroy();
        return view('user.shop.manage-detail')->with('items', $items);
     }
@@ -175,8 +177,6 @@ class OrderController extends Controller
           }
           return view('auth.admin.order.list_order',compact('orders','sum_total'));
         }
-
-
       }
     }
 
