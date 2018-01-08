@@ -41,7 +41,7 @@ class OrderController extends Controller
           'phone' => $request->Input('phone'),
           'address_recevie' => $request->Input('adress'),
           'ship_date' => $NewDate,
-          'note' => 'in process',
+          'note' => 'process',
           'status' => 1,
         ];
 
@@ -267,10 +267,18 @@ class OrderController extends Controller
                       }
             return view('auth.admin.order.list_order',compact('orders','sum_total' ));
       }
+
       public function detelOrder($order)
       {
         $items = OrderDetail::where('order_id', '=', $order)->get();
         $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items]);
         return $pdf->stream('order-detail.pdf');
+      }
+
+      public function cancelOrder()
+      {
+        $orders = Order::where('status','LIKE','3')
+        ->paginate(10);
+        return view('auth.admin.order.list_order', compact('orders'));
       }
 }

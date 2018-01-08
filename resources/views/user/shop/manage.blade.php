@@ -56,7 +56,11 @@
 		                  @else
 		                  <td style="text-align: center; vertical-align: middle;">Không khả dụng</td>
 		                  @endif
+											@if( $order->status == 1 || $order->status == 2)
 		                   <td><a href="{{ url('carts/manage/' . $order->id .'/detail') }}">Xem chi tiết</a></td>
+											@else
+											<td style="text-align: center; vertical-align: middle;">Không khả dụng</td>
+											@endif
 	                </tr>
 										@endforeach
                 </tbody>
