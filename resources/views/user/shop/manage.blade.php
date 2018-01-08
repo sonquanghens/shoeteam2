@@ -37,10 +37,12 @@
 	                @foreach ($orders as $order)
 		             <tr>
 		                  <td>{{ $order->id}}</td>
-		                  <td>{{ $order->date_order}}</td>
+		                  <td>{{ $order->date_order->format('d-m-Y')}}</td>
 		                  <td>@if($order->status == 1 )Đang xử lý @elseif($order->status == 2) Đã xử lý @else Đã Hủy  @endif</td>
 		                  <td>{{ $order->address_recevie}} </td>
-		                  <td>{{ $order->ship_date}} </td>
+		                  <td>
+												{{date('d-m-Y', strtotime($order->ship_date))}}
+											 </td>
 		                  <td>{{ $order->phone}} </td>
 		                  <td>{{ $order->name_receiver}} </td>
 

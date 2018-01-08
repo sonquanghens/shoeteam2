@@ -8,15 +8,13 @@
      </div>
      <div class="col-sm-2">
        <div class="widget">
-         <h4 class="widget-title">Information</h4>
+         <h4 class="widget-title">THÔNG TIN</h4>
          <div>
            <ul>
-             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Web Design</a></li>
-             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Web development</a></li>
-             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Marketing</a></li>
-             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Tips</a></li>
-             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Resources</a></li>
-             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Illustrations</a></li>
+             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> HotLine:01214543588</a></li>
+             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Các câu hỏi thường gặp</a></li>
+             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Hướng dẫn đặt hàng</a></li>
+             <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Chính sách đổi trả</a></li>
            </ul>
          </div>
        </div>
@@ -37,7 +35,7 @@
      </div>
      <div class="col-sm-3">
        <div class="widget">
-         <h4 class="widget-title">Newsletter Subscribe</h4>
+         <h4 class="widget-title">ĐĂNG KÝ NHẬN TIN</h4>
          <form action="#" method="post">
            <input type="email" name="your_email">
            <button class="pull-right" type="submit">Subscribe <i class="fa fa-chevron-right"></i></button>

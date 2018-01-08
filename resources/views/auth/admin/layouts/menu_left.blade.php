@@ -3,7 +3,9 @@
         <ul class="nav" id="main-menu">
             <li>
                 <div class="user-img-div">
-                    <img src="/img/shoes_nike.jpg" class="img-circle" />
+                  <a href="{{url('/admin')}}">
+                      <img src="/img/shoes_nike.jpg" class="img-circle" />
+                  </a>
                 </div>
 
             </li>

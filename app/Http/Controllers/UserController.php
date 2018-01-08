@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Order;
 use App\OrderDetail;
+use Excel;
 class UserController extends Controller
 {
     /**
@@ -109,5 +110,16 @@ class UserController extends Controller
     {
         $items = OrderDetail::where('order_id', '=', $id)->get();
         return view('auth.admin.user.detail_order')->with('items', $items);
+    }
+
+    public function export_user()
+    {
+       $users = User::all();
+       Excel::create('My User', function($excel) use($users) {
+           $excel->sheet('Excel sheet', function($sheet) use($users) {
+               $sheet->fromArray($users);
+           });
+       })->export('xls');
+       return redirect('admin/users');
     }
 }

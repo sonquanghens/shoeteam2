@@ -37,30 +37,3 @@ $('#search').on('keyup',function(){
 		}
 		});
 });
-
-//search user
-$('#search_user').on('keyup',function(){
-		$value=$(this).val();
-		$.ajax({
-		type : 'get',
-		url : '/admin/users/search',
-		data:{'search_user':$value},
-		success:function(data){
-		$('tbody').html(data);
-		}
-		});
-});
-//search product
-$('#searchproduct').on('keyup',function(){
-
-		$value=$(this).val();
-		$.ajax({
-		type : 'get',
-		url : '/admin/product/search',
-		contentType: 'application/json;',
-		data:{'searchproduct':$value},
-		success:function(data){
-		$('tbody').html(data);
-		}
-		});
-});
