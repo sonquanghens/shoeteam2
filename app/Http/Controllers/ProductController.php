@@ -161,7 +161,7 @@ class ProductController extends Controller
 
      public function topProduct()
      {
-       $products = Product::where('count','>',0)->orderBy('id','desc')->paginate(15);
+       $products = Product::where('count','>',0)->orderBy('count','desc')->paginate(15);
        return view('auth.admin.product.list_top_product', compact('products'));
      }
 
