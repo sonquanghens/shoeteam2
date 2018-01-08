@@ -53,7 +53,7 @@
                                 </th>
                                 <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 132px;">Total
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">Status
+                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">Status
                                 </th>
                                 <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">detail
                                 </th>
@@ -76,19 +76,15 @@
                                   <td>{{ $order->date_order->format('d/m/Y') }}</td>
                                   <td>{{number_format ($order->total, 0,'','.') }}</td>
                                   @if($order->status == 1 )
-                                  <td> In Process	</td>
+                                  <td> Chưa xử lý	</td>
                                   @endif
                                   @if($order->status == 2 )
-                                  <td> Done	</td>
+                                  <td> Đã xử lý	</td>
                                   @endif
                                   @if($order->status == 3 )
-                                  <td> Cancel	</td>
+                                  <td> Hủy	</td>
                                   @endif
-                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/detail'.'/'.$order->id.'')}}"><i class="fa fa-pencil fa-fw"></i>order_tail</button></td>
-
-<!--
-                                  <td class="center"><a  class="btn-danger btn-sm" href="{{url('/admin/product'.'/'.$order->id.'/delete')}}" onclick="return xacnhan('Are you sure to want DELETE')"><i class="fa fa-trash-o  fa-fw"></i>Delete</button></td>
-                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/product'.'/'.$order->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i>Edit</button></td> -->
+                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/users/order'.'/'.$order->id.'/detail')}}"><i class="fa fa-pencil fa-fw"></i>order_tail</button></td>
                               </tr>
                             @endforeach
                           @endif

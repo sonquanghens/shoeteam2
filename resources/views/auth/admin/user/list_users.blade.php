@@ -40,8 +40,6 @@
                                 </th>
                                 <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">List Order
                                 </th>
-                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Delete: activate to sort column ascending" style="width: 113px;">Delete</th>
-                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Edit: activate to sort column ascending" style="width: 87px;">Edit</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -56,8 +54,6 @@
                                   <td>{{ $user->phone_number }}</td>
                                   <td>{{ $user->email }}</td>
                                   <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/users/order/').'/'.$user->id}}"><i class="fa fa-eye  fa-fw"></i>Detail</a></td>
-                                  <td class="center"><a  class="btn-danger btn-sm" href="#" onclick="return xacnhan('Are you sure to want DELETE')"><i class="fa fa-trash-o  fa-fw"></i>Delete</a></td>
-                                  <td class="center"> <a class="btn-info btn-sm" href="#"><i class="fa fa-pencil fa-fw"></i>Edit</a></td>
                               </tr>
                             @endforeach
                           @endif
