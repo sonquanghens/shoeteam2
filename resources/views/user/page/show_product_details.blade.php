@@ -16,6 +16,11 @@
 								<p class="single-item-price">
 									<span>{{ number_format($product->unit_price, 0,'','.')}} VNĐ</span>
 								</p>
+                @if($product->status == '1')
+                <p style="  margin-top: 14px;  font-weight: bold;color: red;">
+                    HẾT HÀNG
+                </p>
+                  @endif
 							</d>
 
 							<div class="clearfix"></div>
@@ -39,8 +44,10 @@
                   <option value="43">43</option>
                   <option value="44">44</option>
 								</select>
+              @if($product->status == '0')
 								<a class="add-to-cart" href="#" onclick=" addCart({{$product->id}})"><i class="fa fa-shopping-cart"></i></a>
-								<div class="clearfix"></div>
+              @endif
+                <div class="clearfix"></div>
 							</div>
 						</div>
 					</div>

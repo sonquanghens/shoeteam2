@@ -62,6 +62,15 @@
   @endif
   </div>
 
+  <div class="form-group">
+  {!! Form::label('status', 'Trạng thái') !!}
+  <div class="form-controls">
+    {!! Form::radio('status', '0', true) !!}<span>Còn hàng</span>
+    {!! Form::radio('status', '1') !!}<span>Hết hàng</span>
+
+  </div>
+  </div>
+
   @if(isset($branch))
   <div>
     <img id="output" src="/uploads/@if(isset($product)){{$product->image}} @endif " width="350" height="300" alt="image"/>

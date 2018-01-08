@@ -76,7 +76,7 @@
                                   <td>{{ $order->date_order->format('d/m/Y') }}</td>
                                   <td>{{number_format ($order->total, 0,'','.') }}</td>
                                   <td>{{ $order->note }}</td>
-                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/detail'.'/'.$order->id.'')}}"><i class="fa fa-pencil fa-fw"></i>order_tail</button></td>
+                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/users/order'.'/'.$order->id.'/detail')}}"><i class="fa fa-pencil fa-fw"></i>order_tail</button></td>
 
 <!--
                                   <td class="center"><a  class="btn-danger btn-sm" href="{{url('/admin/product'.'/'.$order->id.'/delete')}}" onclick="return xacnhan('Are you sure to want DELETE')"><i class="fa fa-trash-o  fa-fw"></i>Delete</button></td>

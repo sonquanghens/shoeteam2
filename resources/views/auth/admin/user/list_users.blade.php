@@ -64,7 +64,7 @@
                             </tbody>
                       </table>
                     </div>
-                    <div class="col-sm-10"></div>
+                    <div class="col-sm-10"><a href="{{ url('/admin/users/export')}}" class="btn btn-success" style="float: right;"> Export Excel</a></div>
                     <div class="col-sm-2">{{ $users->links() }}</div>
                   </div>
                 </div>

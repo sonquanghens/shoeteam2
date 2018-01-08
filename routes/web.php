@@ -37,6 +37,7 @@ Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
  Route::get('/users/search', 'UserController@searchUser');
  Route::get('/users/order/{user}', 'UserController@OrdersList');
  Route::get('/users/order/{id}/detail' , 'UserController@detail');
+ Route::get('/users/export' , 'UserController@export_user');
 
  //slider
  Route::get('/slide/list_slide', 'SlideController@listSlide');
@@ -53,6 +54,7 @@ Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
 Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
  /// product
  Route::get('/product/list_product','ProductController@allProduct');
+ Route::get('/product/list_top_product','ProductController@topProduct');
  Route::get('/product/{product}/delete','ProductController@delete');
  Route::get('/product/{product}/edit','ProductController@editProduct');
  Route::put('/product/{product}','ProductController@updateProduct');

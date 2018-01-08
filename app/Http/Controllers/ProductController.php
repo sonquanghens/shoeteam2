@@ -81,7 +81,7 @@ class ProductController extends Controller
 
      public function allProduct()
      {
-        $products = Product::all();
+        $products = Product::orderBy('id','desc')->paginate(15);
         return view('auth.admin.product.list_product', compact('products'));
      }
 
@@ -107,6 +107,7 @@ class ProductController extends Controller
      public function addProduct(EditProductRequest $request)
      {
           $data = $request->all();
+          //dd($request->status)
           if ($request->hasFile('image')  )
           {
               $file = $request->file('image');
@@ -156,5 +157,11 @@ class ProductController extends Controller
        $products = Product::orderBy('id','desc')->paginate(9);
        $branch = Branch::all();
        return view('user.page.new_product', compact('products','branch'));
+     }
+
+     public function topProduct()
+     {
+       $products = Product::where('count','>',0)->orderBy('id','desc')->paginate(15);
+       return view('auth.admin.product.list_top_product', compact('products'));
      }
 }
