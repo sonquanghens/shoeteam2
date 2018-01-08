@@ -14,16 +14,16 @@
               <form class="navbar-form navbar-left" action="/admin/search_order" role="search" method="GET" >
 
 
-                {!!Form::label('Note', null, ['class' => 'form-control'])!!}
+                {!!Form::label('Status', null, ['class' => 'form-control'])!!}
                  {!! Form::select('note',
                      [
-                         ''  =>  '',
-                        'Done'      => 'Done',
-                        'in process'        => 'In Process',
+                        ''  =>  '',
+                        '1'        => 'In Process',
+                        '2'      => 'Done',
+                        '3'        => 'Cancel',
                     ]
                     , null, [ 'class' =>  'form-control',])
                  !!}
-
                 {!!Form::label('From', null, ['class' => 'form-control'])!!}
                 {!! Form::date('date_start', null, ['class' => 'form-control']) !!}
                 {!!Form::label('to', null, ['class' => 'form-control'])!!}
@@ -53,7 +53,7 @@
                                 </th>
                                 <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 132px;">Total
                                 </th>
-                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">Note
+                                <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">Status
                                 </th>
                                 <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 141px;">detail
                                 </th>
@@ -75,8 +75,16 @@
                                   </td>
                                   <td>{{ $order->date_order->format('d/m/Y') }}</td>
                                   <td>{{number_format ($order->total, 0,'','.') }}</td>
-                                  <td>{{ $order->note }}</td>
-                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/users/order'.'/'.$order->id.'/detail')}}"><i class="fa fa-pencil fa-fw"></i>order_tail</button></td>
+                                  @if($order->status == 1 )
+                                  <td> In Process	</td>
+                                  @endif
+                                  @if($order->status == 2 )
+                                  <td> Done	</td>
+                                  @endif
+                                  @if($order->status == 3 )
+                                  <td> Cancel	</td>
+                                  @endif
+                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/detail'.'/'.$order->id.'')}}"><i class="fa fa-pencil fa-fw"></i>order_tail</button></td>
 
 <!--
                                   <td class="center"><a  class="btn-danger btn-sm" href="{{url('/admin/product'.'/'.$order->id.'/delete')}}" onclick="return xacnhan('Are you sure to want DELETE')"><i class="fa fa-trash-o  fa-fw"></i>Delete</button></td>

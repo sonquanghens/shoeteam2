@@ -164,4 +164,5 @@ class ProductController extends Controller
        $products = Product::where('count','>',0)->orderBy('id','desc')->paginate(15);
        return view('auth.admin.product.list_top_product', compact('products'));
      }
+
 }

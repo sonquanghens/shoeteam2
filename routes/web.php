@@ -46,7 +46,6 @@ Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){
  Route::get('/slide/{slide}/edit', 'SlideController@editSlide');
  Route::put('slide/{slide}', 'SlideController@updateSlide');
  Route::get('/slide/{slide}/delete', 'SlideController@deleteSlide');
-
  //Chart
  Route::get('/chart' , 'HomeController@Statistical');
 });

@@ -7,6 +7,7 @@ use App\User;
 use App\Order;
 use App\OrderDetail;
 use Excel;
+
 class UserController extends Controller
 {
     /**
@@ -122,4 +123,5 @@ class UserController extends Controller
        })->export('xls');
        return redirect('admin/users');
     }
+
 }

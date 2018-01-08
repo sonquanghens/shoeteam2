@@ -18,7 +18,6 @@ use Excel;
 use PDF;
 use Twilio;
 use App\User;
-
 class OrderController extends Controller
 {
     public function SaveOrder(CustomerRequests $request)
@@ -69,7 +68,8 @@ class OrderController extends Controller
 
     Public function allOrder()
     {
-        $orders = Order::paginate(10);
+        $orders = Order::where('status','LIKE','1')
+        ->paginate(10);
         return view('auth.admin.order.list_order', compact('orders'));
     }
 
@@ -78,20 +78,19 @@ class OrderController extends Controller
       $date_start = $request->Input('date_start');
       $date_end = $request->Input('date_end');
       $order = Input::get ( 'search_order' );
-      $note = Input::get ( 'note' );
+      $status = Input::get ( 'note' );
       $orderUpercase = Str::lower($order);
-// \Twilio::message('+84' . Auth::user()->phone_number,'ban vua dat hang giay xong ' );
       // dd($date_start);
-      if (!empty($note)) {
+      if (!empty($status)) {
         //there are Search with note
         $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                            ->where('note','LIKE','%'.$note.'%')
+                            ->where('status','LIKE','%'.$status.'%')
                             ->where('users.name','LIKE','%'.$order.'%')
                             ->where('date_order', '>=', $date_start)
                             ->where('date_order', '<=', $date_end)
                             ->paginate(10);
         $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                            ->where('note','LIKE','%'.$note.'%')
+                            ->where('status','LIKE','%'.$status.'%')
                             ->where('users.name','LIKE','%'.$order.'%')
                             ->where('date_order', '>=', $date_start)
                             ->where('date_order', '<=', $date_end)
@@ -108,14 +107,14 @@ class OrderController extends Controller
         {
           //there are not date_end and date_start , but there is Name_search
           $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                              ->where('note','LIKE','%'.$order.'%')
+                              ->where('status','LIKE','%'.$order.'%')
                               ->orwhere('users.name','LIKE','%'.$order.'%')
-                              ->orWhere('note','LIKE','%'.$orderUpercase.'%')
+                              ->orWhere('status','LIKE','%'.$orderUpercase.'%')
                               ->paginate(10);
           $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                              ->where('note','LIKE','%'.$order.'%')
+                              ->where('status','LIKE','%'.$order.'%')
                               ->orwhere('users.name','LIKE','%'.$order.'%')
-                              ->orWhere('note','LIKE','%'.$orderUpercase.'%')
+                              ->orWhere('status','LIKE','%'.$orderUpercase.'%')
                               ->get();
                               // dd($sum_orders);
 
@@ -228,16 +227,15 @@ class OrderController extends Controller
       //searchdonebutton
       public function searchNoteDone()
       {
-            $note = "DONE";
-            $noteUpercase = Str::lower($note);
-            // dd($noteUpercase);
+            $status = "DONE";
+            // dd($statusUpercase);
             $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('note','LIKE','%'.$note.'%')
-                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->where('status','LIKE','%'.$status.'%')
+                                ->orWhere('status','LIKE','%'.$statusUpercase.'%')
                                 ->paginate(10);
             $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('note','LIKE','%'.$note.'%')
-                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->where('status','LIKE','%'.$status.'%')
+                                ->orWhere('status','LIKE','%'.$statusUpercase.'%')
                                 ->get();
                                   // dd($sum_orders);
 
@@ -247,19 +245,19 @@ class OrderController extends Controller
                       }
             return view('auth.admin.order.list_order',compact('orders','sum_total' ));
       }
-      //searchnoteInprocess
+      //searchstatusInprocess
       public function searchnoteInprocess()
       {
-            $note = "IN PROCESS";
-            $noteUpercase = Str::lower($note);
-            // dd($noteUpercase);
+            $status = "IN PROCESS";
+            $statusUpercase = Str::lower($status);
+            // dd($statusUpercase);
             $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('note','LIKE','%'.$note.'%')
-                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->where('status','LIKE','%'.$status.'%')
+                                ->orWhere('status','LIKE','%'.$statusUpercase.'%')
                                 ->paginate(10);
             $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('note','LIKE','%'.$note.'%')
-                                ->orWhere('note','LIKE','%'.$noteUpercase.'%')
+                                ->where('status','LIKE','%'.$status.'%')
+                                ->orWhere('status','LIKE','%'.$statusUpercase.'%')
                                 ->get();
                                   // dd($sum_orders);
 
