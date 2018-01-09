@@ -41,7 +41,7 @@ class OrderController extends Controller
           'phone' => $request->Input('phone'),
           'address_recevie' => $request->Input('adress'),
           'ship_date' => $NewDate,
-          'note' => 'process',
+          'note' => '1',
           'status' => 1,
         ];
 
@@ -69,6 +69,7 @@ class OrderController extends Controller
     Public function allOrder()
     {
         $orders = Order::where('status','LIKE','1')
+                        ->orWhere('status','LIKE','2')->orderBy('id','desc')
         ->paginate(10);
         return view('auth.admin.order.list_order', compact('orders'));
     }
@@ -224,7 +225,7 @@ class OrderController extends Controller
          $pdf = PDF::loadView('user.pdf.order-detail', ['items' => $items,'orders' => $orders]);
          return $pdf->stream('order-detail.pdf');
       }
-      //searchdonebutton
+
       public function searchNoteDone()
       {
             $status = "DONE";
@@ -277,8 +278,15 @@ class OrderController extends Controller
 
       public function cancelOrder()
       {
-        $orders = Order::where('status','LIKE','3')
+        $orders = Order::where('status','LIKE','2')
         ->paginate(10);
         return view('auth.admin.order.list_order', compact('orders'));
+      }
+
+      public function updateOrder($id)
+      {
+        $order = Order::find($id);
+        $order->update(['note' => '2','status' => '2']);
+        return redirect('admin/order');
       }
 }

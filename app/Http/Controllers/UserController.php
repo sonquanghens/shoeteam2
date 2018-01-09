@@ -103,14 +103,15 @@ class UserController extends Controller
     public function OrdersList(User $user)
     {
       $order = Order::where('user_id','=',$user->id)->paginate(15);
-
       return view('auth.admin.user.list_order',compact('order'));
     }
 
     public function detail($id)
     {
+        $order = Order::find($id);
+        $user = User::find($order->user_id);
         $items = OrderDetail::where('order_id', '=', $id)->get();
-        return view('auth.admin.user.detail_order')->with('items', $items);
+        return view('auth.admin.user.detail_order',compact('items','order','user'));
     }
 
     public function export_user()

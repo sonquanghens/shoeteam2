@@ -80,10 +80,10 @@
                               <div class="col-xs-3">
                                   <i class="fa fa-support fa-5x"></i>
                               </div>
-                            <?php $order = App\Order::where('status','=', 3)->get(); ?>
+                            <?php $order = App\Order::where('status','=', 2)->get(); ?>
                               <div class="col-xs-9 text-right">
                                   <div class="huge">{{ count($order) }}</div>
-                                  <div style="margin-top: 20px;">Đơn hàng hủy!</div>
+                                  <div style="margin-top: 20px;">Đơn hàng đã xử lý!</div>
                               </div>
                           </div>
                       </div>
