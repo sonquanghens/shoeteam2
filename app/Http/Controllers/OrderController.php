@@ -365,10 +365,19 @@ class OrderController extends Controller
         ->paginate(10);
         return view('auth.admin.order.list_order', compact('orders'));
       }
-      Public function allOrderProcess()
+      public function allOrderProcess()
       {
           $orders = Order::where('status','LIKE','1')
           ->paginate(10);
           return view('auth.admin.order.list_order', compact('orders'));
+      }
+      public function upDateOrder($id)
+      {
+        $status = Input::get ( 'note' );
+        $order = Order::find($id);
+        $order->update(['status' => $status]);
+        $items = OrderDetail::where('order_id', '=', $id)->get();
+        return view('auth.admin.user.detail_order')->with('items', $items);
+
       }
 }
