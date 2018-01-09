@@ -86,6 +86,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
   Route::put('/order/{order}/status','OrderController@upDateOrder');
 
 
+
 });
 
 //order

@@ -52,7 +52,7 @@ class HomeController extends Controller
 
     public function Statistical(Request $repuest)
     {
-      
+
       $year = date('Y');
         $add = "";
         $minus1 = date('Y', strtotime('-1 years'));

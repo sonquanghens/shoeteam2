@@ -27,7 +27,7 @@
 							<div class="space20">&nbsp;</div>
 
 							<div class="single-item-desc">
-								<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo ms id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe.</p>
+								<p style="text-align: justify;">{{ $product->description }}</p>
 							</div>
 							<div class="space20">&nbsp;</div>
 
