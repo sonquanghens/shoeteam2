@@ -68,8 +68,7 @@ class OrderController extends Controller
 
     Public function allOrder()
     {
-        $orders = Order::where('status','LIKE','1')
-        ->paginate(10);
+        $orders = Order::paginate(10);
         return view('auth.admin.order.list_order', compact('orders'));
     }
 
@@ -85,15 +84,19 @@ class OrderController extends Controller
 
           if (!empty($date_end) && !empty($date_start)) {
             //there are Search with note
-            $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $orders = Order::where('status','LIKE','%'.$status.'%')
                                 ->where('date_order', '>=', $date_start)
                                 ->where('date_order', '<=', $date_end)
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->paginate(10);
-            $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $sum_orders = Order::where('status','LIKE','%'.$status.'%')
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->where('date_order', '>=', $date_start)
                                 ->where('date_order', '<=', $date_end)
                                 ->get();
@@ -106,14 +109,18 @@ class OrderController extends Controller
           }
           elseif (empty($date_start) && !empty($date_end)) {
             //there are Search with note
-            $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $orders = Order::where('status','LIKE','%'.$status.'%')
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->where('date_order', '<=', $date_end)
                                 ->paginate(10);
-            $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $sum_orders = Order::where('status','LIKE','%'.$status.'%')
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->where('date_order', '<=', $date_end)
                                 ->get();
                                 // dd($sum_orders);
@@ -124,14 +131,18 @@ class OrderController extends Controller
                 return view('auth.admin.order.list_order',compact('orders','sum_total','date' ));
           }
           elseif (!empty($date_start) && empty($date_end)) {
-            $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $orders = Order::where('status','LIKE','%'.$status.'%')
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->where('date_order', '>=', $date_start)
                                 ->paginate(10);
-            $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $sum_orders = Order::where('status','LIKE','%'.$status.'%')
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->where('date_order', '>=', $date_start)
                                 ->get();
                                 // dd($sum_orders);
@@ -142,13 +153,17 @@ class OrderController extends Controller
                 return view('auth.admin.order.list_order',compact('orders','sum_total','date' ));
           }
           elseif (empty($date_start) && empty($date_end)) {
-            $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $orders = Order::where('status','LIKE','%'.$status.'%')
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->paginate(10);
-            $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                                ->where('status','LIKE','%'.$status.'%')
-                                ->where('users.name','LIKE','%'.$order.'%')
+            $sum_orders = Order::where('status','LIKE','%'.$status.'%')
+                                ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
                                 ->get();
                                 // dd($sum_orders);
                  $sum_total =0;
@@ -162,16 +177,16 @@ class OrderController extends Controller
       else {
         if(empty($date_start) && empty($date_end))
         {
-          //there are not date_end and date_start , but there is Name_search
-          $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                              ->where('status','LIKE','%'.$order.'%')
-                              ->orwhere('users.name','LIKE','%'.$order.'%')
-                              ->orWhere('status','LIKE','%'.$orderUpercase.'%')
+
+          $orders = Order::whereHas('user', function ($query) use ($order)
+                                  {
+                                      $query->where('name', 'LIKE', '%' . $order . '%');
+                                  })
                               ->paginate(10);
-          $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-                              ->where('status','LIKE','%'.$order.'%')
-                              ->orwhere('users.name','LIKE','%'.$order.'%')
-                              ->orWhere('status','LIKE','%'.$orderUpercase.'%')
+          $sum_orders = Order::whereHas('user', function ($query) use ($order)
+                                  {
+                                      $query->where('name', 'LIKE', '%' . $order . '%');
+                                  })
                               ->get();
                               // dd($sum_orders);
 
@@ -183,16 +198,20 @@ class OrderController extends Controller
         }
         elseif (empty($date_end)) {
           //there are not date_end but there is date_start
-              $orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-              ->where('users.name','LIKE','%'.$order.'%')
-              ->where('date_order', '>=', $date_start )
+              $orders = Order::where('date_order', '>=', $date_start )
+              ->whereHas('user', function ($query) use ($order)
+                                      {
+                                          $query->where('name', 'LIKE', '%' . $order . '%');
+                                      })
               ->orderBy('date_order','asc')
               ->paginate(10);
 
               // sum total
-              $sum_orders = Order::join('users', 'orders.user_id', '=', 'users.id')
-              ->where('users.name','LIKE','%'.$order.'%')
-              ->where('date_order', '>=', $date_start )
+              $sum_orders = Order::where('date_order', '>=', $date_start )
+              ->whereHas('user', function ($query) use ($order)
+                                      {
+                                          $query->where('name', 'LIKE', '%' . $order . '%');
+                                      })
               ->orderBy('date_order','asc')
               ->get();
               $sum_total =0;
@@ -204,10 +223,18 @@ class OrderController extends Controller
         elseif (empty($date_start)) {
           //there is date_end no date_end and no Name_search
             $orders = Order::where('date_order', '<=', $date_end)
+            ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
             ->orderBy('date_order','asc')
             ->paginate(10);
             //sum Total
             $sum_orders = Order::where('date_order', '<=', $date_end)
+            ->whereHas('user', function ($query) use ($order)
+                                    {
+                                        $query->where('name', 'LIKE', '%' . $order . '%');
+                                    })
             ->orderBy('date_order','asc')
             ->get();
             $sum_total =0;
@@ -337,5 +364,11 @@ class OrderController extends Controller
         $orders = Order::where('status','LIKE','3')
         ->paginate(10);
         return view('auth.admin.order.list_order', compact('orders'));
+      }
+      Public function allOrderProcess()
+      {
+          $orders = Order::where('status','LIKE','1')
+          ->paginate(10);
+          return view('auth.admin.order.list_order', compact('orders'));
       }
 }

@@ -18,9 +18,9 @@
                  {!! Form::select('note',
                      [
                         ''  =>  '',
-                        '1'        => 'In Process',
-                        '2'      => 'Done',
-                        '3'        => 'Cancel',
+                        '1'        => 'Chưa xử lý',
+                        '2'      => 'Đã xử lý',
+                        '3'        => 'Hủy',
                     ]
                     , null, [ 'class' =>  'form-control',])
                  !!}
@@ -69,10 +69,8 @@
                                   <td class="">{{ $order->id }}</td>
 
                                   <td class="sorting_1">
-                                    @if($order->user)
-                                    {{ $order->user->name }}
-                                    @endif
-                                  </td>
+                                    {{ $order->user->name }}      
+                                 </td>
                                   <td>{{ $order->date_order->format('d/m/Y') }}</td>
                                   <td>{{number_format ($order->total, 0,'','.') }}</td>
                                   @if($order->status == 1 )
