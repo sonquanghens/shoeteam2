@@ -60,11 +60,10 @@
      </div>
 
      <div class="col-md-3">
-           {!! Form::open(['url' => '/admin/branch']) !!}
+           {!! Form::open(['url' => '/admin/order/'.$item->order_id.'/status','method' => 'put']) !!}
            @if($item->order->status == 1 )
            {!! Form::select('note',
                [
-
                   '1'        => 'Chưa xử lý',
                   '2'      => 'Đã xử lý',
                   '3'        => 'Hủy',
