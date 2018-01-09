@@ -82,7 +82,9 @@ Route::group(['prefix' => 'admin','middleware' => 'checkadmin'],function(){
   Route::get('order/done','OrderController@searchNoteDone');
   Route::get('order/in','OrderController@searchnoteInprocess');
   Route::get('/order/cancel','OrderController@cancelOrder');
-  Route::get('/order/{id}/update', 'OrderController@updateOrder');
+  Route::get('/order/inprocess','OrderController@allOrderProcess');
+  Route::put('/order/{order}/status','OrderController@upDateOrder');
+
 
 
 });
