@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Branch;
+use Charts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\EditProductRequest;
@@ -162,7 +163,30 @@ class ProductController extends Controller
      public function topProduct()
      {
        $products = Product::where('count','>',0)->orderBy('count','desc')->paginate(15);
-       return view('auth.admin.product.list_top_product', compact('products'));
+       $branch = Branch::all();
+       $date =  [];
+       $total = [];
+       foreach ($branch as $value) {
+         $count =0;
+         $name_branch ="";
+         $product = Product::where('branch_id','=',$value->id)->get();
+         foreach ($product as $item) {
+            $count+=$item->count;
+            $name_branch = $item->branch->name;
+         }
+        // dd($product);
+         $total[] = $count;
+        // dd($total);
+         $date[]= $name_branch;
+        // dd($date);
+       }
+       $chart = Charts::create('pie', 'highcharts')
+                            ->title('Thống kê hàng bán được')
+                            ->labels($date)
+                            ->values($total)
+                            ->dimensions(1000,500)
+                            ->responsive(false);
+       return view('auth.admin.product.list_top_product', compact('products','chart'));
 
      }
 
