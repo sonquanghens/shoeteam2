@@ -60,8 +60,8 @@ class OrderController extends Controller
            $product->update(['count' => $product->count + $item->qty]);
        }
        $items = OrderDetail::where('order_id', '=', $order->id)->get();
-
-       Twilio::message('+84'.Auth::user()->phone_number, 'ban vua dat mot don hang');
+      // dd($order->user->name.' vua dat mot don hang . Tong tien :'.$order->total);
+       Twilio::message('+84'.Auth::user()->phone_number, $order->user->name.' vua dat mot don hang . Tong tien :'.$order->total.' VND');
        Cart::destroy();
        return view('user.shop.manage-detail')->with('items', $items);
     }
@@ -376,7 +376,9 @@ class OrderController extends Controller
         $status = Input::get ('note');
         $order = Order::find($id);
         $order->update(['status' => $status]);
-        return redirect('admin/order');
+        $user = User::find($order->user_id);
+        $items = OrderDetail::where('order_id', '=', $id)->get();
+        return view('auth.admin.user.detail_order',compact('items','order','user'));
 
       }
 }
