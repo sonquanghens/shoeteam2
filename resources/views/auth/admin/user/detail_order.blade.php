@@ -17,7 +17,7 @@
                 Số điện thoại : {{ $order->phone }} <br />
                 Ngày đặt : {{date('d-m-Y', strtotime($order->date_order))}} <br />
                 Ngày nhận : {{date('d-m-Y', strtotime($order->ship_date))}} <br />
-                Trạng thái giao hàng : @if($order->note == '1') Chưa giao @elseif($order->note == '2') Đã giao @else Đã hủy @endif
+                Trạng thái giao hàng : @if($order->status == '1') Chưa giao @elseif($order->status == '2') Đã giao @else Đã hủy @endif
 
               </div>
               <div class="col-lg-6">
@@ -81,6 +81,7 @@
 
      <div class="col-md-3">
            {!! Form::open(['url' => '/admin/order/'.$item->order_id.'/status','method' => 'put']) !!}
+           @if($item->order->status != 2 )
            @if($item->order->status == 1 )
            {!! Form::select('note',
                [
@@ -111,7 +112,9 @@
               , null, [ 'class' =>  'form-control',])
            !!}
            @endif
+
            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+           @endif
             <a href="{{ url('carts/manage/'. $item->order_id. '/detail/export')}}" class="btn btn-success"> Export PDF</a>
            {!! Form::close() !!}
      </div>

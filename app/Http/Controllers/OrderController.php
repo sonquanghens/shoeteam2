@@ -373,11 +373,10 @@ class OrderController extends Controller
       }
       public function upDateOrder($id)
       {
-        $status = Input::get ( 'note' );
+        $status = Input::get ('note');
         $order = Order::find($id);
         $order->update(['status' => $status]);
-        $items = OrderDetail::where('order_id', '=', $id)->get();
-        return view('auth.admin.user.detail_order')->with('items', $items);
+        return redirect('admin/order');
 
       }
 }
