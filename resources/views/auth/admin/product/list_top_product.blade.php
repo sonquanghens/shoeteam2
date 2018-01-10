@@ -3,21 +3,8 @@
   <div id="page-inner">
       <div class="row">
           <div class="col-md-12" style=" margin-bottom: 25px;  border-bottom: 2px solid #d2d2d2;">
-            <div class="col-sm-5">
-              <h1 class="page-head">Product <small>list</small></h1>
-            </div>
-              <div class="col-sm-3" style="margin-top:30px;width: 30%;">
-              <p style="float:right;"><a class="btn-primary btn-lg" role="button" href="{{ url('/admin/product/create') }}">CREATE</a></p>
-            </div>
-            <div class="input-group" style="float: right;    margin-top: 19px;">
-              <form class="navbar-form navbar-left" method="get" id="searchform" action="{{url('admin/product/search')}}">
-                <div class="form-group">
-                  <input type="text" value="{{ isset($_GET['search_product']) ? $_GET['search_product'] : '' }}" name="search_product" class="form-control" placeholder="Search">
-                  <button type="submit"  class="btn btn-info">sreach</button>
-                </div>
-              </form>
+            {!! $chart->html() !!}
           </div>
-      </div>
       </div>
       <div class="row">
           <div class="col-md-12">
@@ -42,8 +29,6 @@
                                 </th>
                                 <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 141px;">Status
                                 </th>
-                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Delete: activate to sort column ascending" style="width: 113px;">Delete</th>
-                                <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Edit: activate to sort column ascending" style="width: 87px;">Edit</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -60,8 +45,6 @@
                                   <td>{{ $product->count }}</td>
 
                                   <td>@if($product->status == '0') Còn hàng @else Hết hàng @endif</td>
-                                  <td class="center"><a  class="btn-danger btn-sm" href="{{url('/admin/product'.'/'.$product->id.'/delete')}}" onclick="return xacnhan('Are you sure to want DELETE')"><i class="fa fa-trash-o  fa-fw"></i>Delete</button></td>
-                                  <td class="center"> <a class="btn-info btn-sm" href="{{url('/admin/product'.'/'.$product->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i>Edit</button></td>
                               </tr>
                             @endforeach
                           @endif
@@ -73,8 +56,9 @@
                   </div>
                 </div>
               </div>
-          </div>
+  </div>
 
   <!-- /. PAGE INNER  -->
-
+  {!! Charts::scripts() !!}
+  {!! $chart->script() !!}
 @stop

@@ -35,7 +35,7 @@
                     <td>{{ $item->id}}</td>
                     <td>{{ $item->quantily}}</td>
                     <td>{{ number_format($item->unit_price, '0', ',', '.') . ' VNĐ'}}</td>
-                    <td>{{ number_format($item->quantily * $item->unit_price, '0', ',', '.') . ' VNĐ'}}</td>
+                    <td>{{ number_format($item->unit_price * $item->quantily, '0', ',', '.') . ' VNĐ'}}</td>
                     <td>{{ $item->order_id}}</td>
                     <?php $product = App\Product::find($item->product_id); ?>
                     @if (empty($product))

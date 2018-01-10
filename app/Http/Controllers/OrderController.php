@@ -53,11 +53,11 @@ class OrderController extends Controller
              'order_id' => $order->id,
              'product_id' => $item->id,
              'quantily' => $item->qty,
-             'unit_price' => number_format($item->subtotal, 0,'',''),
+             'unit_price' => number_format($item->price, 0,'',''),
              'size' => $item->options->size,
            ]);
            $product = Product::find($item->id);
-           $product->update(['count' => $product->count + 1]);
+           $product->update(['count' => $product->count + $item->qty]);
        }
        $items = OrderDetail::where('order_id', '=', $order->id)->get();
 
