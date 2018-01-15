@@ -6,6 +6,14 @@
       <div class="space60">&nbsp;</div>
       <div class="row">
           <div class="col-sm-3">
+            <div class="form-group">
+              <div class="col-md-12">
+                <p style="font-size: 16px;font-weight: bold;  margin-bottom: 10px;  padding-bottom: 10px;">LỌC THEO</p>
+              </div>
+              <div class="col-md-12">
+                <a href="{{url('/products/sale/allproduct')}}"><p style="font-size: 14px;font-weight: bold;  margin-bottom: 10px;  padding-bottom: 10px;">ON SALE</p></a>
+              </div>
+            </div>
             <div class="form-group" >
               <div class="col-md-12" style="margin-bottom: 15px;">
                 <p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> NHÃN HIỆU</p>
@@ -16,13 +24,6 @@
                 @endforeach
               </div>
             </div>
-
-            <div class="form-group">
-              <div class="col-md-12" style="margin-bottom: 15px;">
-                <p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> SIZE GIÀY</p>
-              </div>
-            </div>
-
             <div class="form-group">
               <div class="col-md-12" style="margin-bottom: 15px;">
                 <p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> GIÁ</p>
@@ -44,6 +45,10 @@
         <div class="col-sm-9">
           <div class="beta-products-list">
             <h4 style="margin-bottom: 20px;">SẢN PHẨM MỚI </h4>
+            <div class="beta-products-details">
+              <p class="pull-left">@if(isset($products))Tìm thấy {{ count($products) }} @else Không tìm thấy @endif sản phẩm</p>
+              <div class="clearfix"></div>
+            </div>
             <div class="row" id="data">
                   @foreach($products as $value)
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"  style="
@@ -67,8 +72,10 @@
                           @if($value->promotion_price > 0)
                               <span class="flash-del">{{ number_format($value->unit_price, 0,'','.') }}</span>
                               <span class="flash-sale">{{ number_format($value->promotion_price, 0,'','.')}} VNĐ</span>
-                          @endif
+                          @else
                             <span>{{ number_format($value->unit_price, 0,'','.') }}&nbsp; {{ $value->unit }} VNĐ</span>
+                          @endif
+
                           </p>
                         </a>
                         </div>

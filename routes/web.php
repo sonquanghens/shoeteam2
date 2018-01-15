@@ -18,6 +18,7 @@ Route::get('/products/new', 'ProductController@newProduct');
 Route::get('/products/{product}', 'ProductController@showProduct');
 Route::get('/products/branch/{name}', 'BranchController@getBranch');
 Route::get('/pricesearch', 'ProductController@PriceSearch');
+Route::get('/products/sale/allproduct', 'ProductController@getAllSale');
 
 
 Route::group(['prefix'=>'admin','middleware' => 'checkadmin'],function(){

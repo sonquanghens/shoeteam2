@@ -5,7 +5,7 @@
     <nav class="main-menu" style="margin-top: 30px;float: left;">
       <ul class="l-inline ov">
         <li><a href="{{ url('/') }}">Trang chủ</a></li>
-        <li><a href="#">Sản phẩm</a>
+        <li><a href="{{url('/products/new')}}">Sản phẩm</a>
           <?php  $branchs = App\Branch::all();  ?>
           <ul class="sub-menu">
             @foreach($branchs as $branch)
@@ -13,7 +13,7 @@
             @endforeach
           </ul>
         </li>
-        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="{{url('/products/sale/allproduct')}}">SALE</a></li>
         <li><a href="contacts.html">Liên hệ</a></li>
       </ul>
       <div class="clearfix"></div>
