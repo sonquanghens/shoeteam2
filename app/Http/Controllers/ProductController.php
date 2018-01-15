@@ -11,8 +11,8 @@ class ProductController extends Controller
 {
     public function home()
      {
-       $products = Product::orderBy('id','desc')->skip(0)->take(4)->get();
-       $topproduct = Product::orderBy('count','desc')->skip(0)->take(4)->get();
+       $products = Product::orderBy('id','desc')->skip(0)->take(8)->get();
+       $topproduct = Product::orderBy('count','desc')->skip(0)->take(8)->get();
        return view('user.page.contents', compact('products','topproduct'));
      }
 
@@ -23,7 +23,7 @@ class ProductController extends Controller
          $products = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
                              ->where('products.name_product','like','%'.$req->key.'%')
                              ->orWhere('branchs.name','like','%'.$req->key.'%')
-                             ->orWhere('unit_price','=',$req->key)
+                             ->orWhere('unit_price','=',$req->key)->select('products.*')
                              ->paginate(25);
        }
          $branch = Branch::all();
@@ -50,7 +50,7 @@ class ProductController extends Controller
            case 1:
                $products = Product::where('unit_price','<=',150000)->paginate(15);
                $branch = Branch::all();
-                //dd($product);
+                //
                return view('user.page.search',compact('products','branch'));
                break;
            case 2:
@@ -71,6 +71,7 @@ class ProductController extends Controller
            case 5:
                $products=Product::where('unit_price','>',1200000)->where('unit_price','<=',1600000)->paginate(15);
                $branch = Branch::all();
+               // dd($products);
                return view('user.page.search',compact('products','branch'));
                break;
           case 6 :
@@ -149,7 +150,9 @@ class ProductController extends Controller
        $products = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
                            ->where('products.name_product','like','%'.$request->search_product.'%')
                            ->orWhere('branchs.name','like','%'.$request->search_product.'%')
+                           ->select('products.*')
                            ->paginate(15);
+                          // dd($products);
         return view('auth.admin.product.product_search',compact('products'));
      }
 
@@ -190,4 +193,10 @@ class ProductController extends Controller
 
      }
 
+    public function getAllSale()
+    {
+      $products = Product::orderBy('count','desc')->paginate(9);
+      $branch = Branch::all();
+      return view('user.page.onsale', compact('products','branch'));
+    }
 }

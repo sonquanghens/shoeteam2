@@ -4,7 +4,13 @@
     <meta charset="utf-8">
 </head><!--/head-->
 <body>
-<h1 style="text-align:center;">CHI TIẾT HÓA ĐƠN</h1>
+  <div>
+    <!-- <img src="/img/logo_footer.png" /> -->
+  </div>
+  <div>
+    <h1 style="text-align:center;">CHI TIẾT HÓA ĐƠN</h1>
+  </div>
+
   <div>
     <h4 style="margin-bottom:0px;">Thông tin khách hàng</h4>
     <div>

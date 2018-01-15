@@ -24,17 +24,16 @@
                 @endforeach
               </div>
             </div>
-
             <div class="form-group">
               <div class="col-md-12" style="margin-bottom: 15px;">
                 <p style="font-size: 16px;font-weight: bold; border-bottom: 1px solid gray;  margin-bottom: 10px;  padding-bottom: 10px;"> GIÁ</p>
                 <select name="pricesearch" form="pricesearch" class="form-control">
-                              <option value="1" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 1) ? 'selected' : '' }}><i></i>30.000 - 150.000</option>
-                              <option value="2" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 2) ? 'selected' : '' }}><i></i>150.000 - 400.000</option>
-                              <option value="3" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 3) ? 'selected' : '' }}><i></i>400.000 - 800.000</option>
-                              <option value="4" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 4) ? 'selected' : '' }}><i></i>800.000 - 1.200.000</option>
-                              <option value="5" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 5) ? 'selected' : '' }}><i></i>1.200.000 - 1.600.000</option>
-                              <option value="6" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 6) ? 'selected' : '' }}><i></i>1.600.000 trở lên</option>
+                  <option value="1" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 1) ? 'selected' : '' }}><i></i>30.000 - 150.000</option>
+                  <option value="2" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 2) ? 'selected' : '' }}><i></i>150.000 - 400.000</option>
+                  <option value="3" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 3) ? 'selected' : '' }}><i></i>400.000 - 800.000</option>
+                  <option value="4" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 4) ? 'selected' : '' }}><i></i>800.000 - 1.200.000</option>
+                  <option value="5" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 5) ? 'selected' : '' }}><i></i>1.200.000 - 1.600.000</option>
+                  <option value="6" {{(isset($_GET['pricesearch']) && $_GET['pricesearch'] == 6) ? 'selected' : '' }}><i></i>1.600.000 trở lên</option>
                           </select>
                           <br>
                           <form id="pricesearch" class="pull-left" action="{{url('/pricesearch')}}" method="get">
@@ -45,15 +44,14 @@
           </div>
         <div class="col-sm-9">
           <div class="beta-products-list">
-            <h4>KẾT QUẢ TÌM KIẾM</h4>
+            <h4 style="margin-bottom: 20px;">SẢN PHẨM MỚI </h4>
             <div class="beta-products-details">
               <p class="pull-left">@if(isset($products))Tìm thấy {{ count($products) }} @else Không tìm thấy @endif sản phẩm</p>
               <div class="clearfix"></div>
             </div>
             <div class="row" id="data">
-                @if(isset($products))
                   @foreach($products as $value)
-                    <div class="col-sm-4" >
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"  style="margin-top: 10px;margin-bottom: 10px;">
                       <div class="single-item">
                         @if($value->promotion_price > 0)
                         <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
@@ -62,23 +60,25 @@
                           <a href="{{ url('/products/').'/'.$value->id }}"><img src="/uploads/{{ $value->image }}" width="270" height="320" alt=""></a>
                         </div>
                         <div class="single-item-body">
-                          <p class="single-item-title">  <a href="{{ url('/products/').'/'.$value->id }}">{{ $value->name_product }} - {{ $value->branch->name }}</a></p>
-                          <p class="single-item-price">
-                            @if($value->promotion_price > 0)
-                                <span class="flash-del">{{ number_format($value->unit_price, 0,'','.') }}</span>
-                                <span class="flash-sale">{{ number_format($value->promotion_price, 0,'','.')}} VNĐ</span>
-                            @else
-                               <span>{{ number_format($value->unit_price, 0,'','.') }}&nbsp; {{ $value->unit }} VNĐ</span>
-                            @endif
+                          <p class="single-item-title">
+                            <a href="{{ url('/products/').'/'.$value->id }}">{{ $value->name_product }}
+                            </a>
                           </p>
+                          <a href="{{ url('/products/').'/'.$value->id }}">
+                          <p class="single-item-price">
+                          @if($value->promotion_price > 0)
+                              <span class="flash-del">{{ number_format($value->unit_price, 0,'','.') }}</span>
+                              <span class="flash-sale">{{ number_format($value->promotion_price, 0,'','.')}} VNĐ</span>
+                          @else
+                            <span>{{ number_format($value->unit_price, 0,'','.') }}&nbsp; {{ $value->unit }} VNĐ</span>
+                          @endif
+                          </p>
+                        </a>
                         </div>
                       </div>
                     </div>
                   @endforeach
-                  <div class="row">{{ $products->links() }}</div>
-                  @endif
-
-                <div class="space50">&nbsp;</div>
+                <div class="row">{{ $products->links() }}</div>
               </div>
             </div>
           </div> <!-- .beta-products-list -->
@@ -89,20 +89,5 @@
 @stop
 
 @section('script')
-<!-- <script>
-    $(function(){
-      $('#searchsubmit').click(function(e) {
-        e.preventDefault();
-        $.ajax({
-           dataType: "json",
-           url: '/search',
-           data: {keyword: $('#key').value()},
-           success: function (result) {
-               // update your page with the result json
-               console.log(result);
-           },
-        });
-      });
-    });
-</script> -->
+
 @stop

@@ -12,14 +12,21 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="beta-products-list">
-              <h4>Sản Phẩm Mới</h4>
+              <div class="col-sm-6">
+                <h4>Sản Phẩm Mới</h4>
+              </div>
+              <div class="col-sm-6">
+                <a href="{{url('/products/new')}}"><p style="text-align: right;color: #008CBA;font-weight:  bold;margin-top: 10px;">
+                  Xem chi tiết <span class="fa fa-caret-right fa-2"></span>
+                </p></a>
+              </div>
               <div class="beta-products-details">
                 <p class="pull-left"></p>
                 <div class="clearfix"></div>
               </div>
               <div class="row">
                 @foreach($products as $product)
-                <div class="col-sm-3">
+                <div class="col-sm-3" style="margin-bottom:20px;">
                   <div class="single-item">
                     @if($product->promotion_price > 0)
                     <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
@@ -37,8 +44,10 @@
                       @if($product->promotion_price > 0)
                           <span class="flash-del">{{ number_format($product->unit_price, 0,'','.') }}</span>
                           <span class="flash-sale">{{ number_format($product->promotion_price, 0,'','.')}} VNĐ</span>
+                      @else
+                          <span>{{ number_format($product->unit_price, 0,'','.') }}&nbsp; {{ $product->unit }} VNĐ</span>
                       @endif
-                        <span>{{ number_format($product->unit_price, 0,'','.') }}&nbsp; {{ $product->unit }}</span>
+
                       </p>
                     </a>
                     </div>
@@ -68,14 +77,21 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="beta-products-list">
-              <h4>Sản Phảm Ưa Thích</h4>
+              <div class="col-sm-6">
+                <h4>Sản Phẩm Ưa Thích</h4>
+              </div>
+              <div class="col-sm-6">
+                <a href="{{url('/products/sale/allproduct')}}"><p style="text-align: right;color: #008CBA;font-weight:  bold;margin-top: 10px;">
+                  Xem chi tiết <span class="fa fa-caret-right fa-2"></span>
+                </p></a>
+              </div>
               <div class="beta-products-details">
                 <p class="pull-left"></p>
                 <div class="clearfix"></div>
               </div>
               <div class="row">
                 @foreach($topproduct as $product)
-                <div class="col-sm-3">
+                <div class="col-sm-3" style="margin-bottom:20px;">
                   <div class="single-item">
                     @if($product->promotion_price > 0)
                       <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
@@ -90,8 +106,10 @@
                       @if($product->promotion_price > 0)
                         <span class="flash-del">{{ number_format($product->unit_price, 0,'','.') }}</span>
                         <span class="flash-sale">{{ number_format($product->promotion_price, 0,'','.')}} VNĐ</span>
-                      @endif
+                      @else
                         <span>{{ number_format($product->unit_price, 0,'','.') }}&nbsp; VNĐ</span>
+                      @endif
+
                       </p>
                     </a>
                     </div>
