@@ -26,11 +26,6 @@
 							<div class="clearfix"></div>
 							<div class="space20">&nbsp;</div>
 
-							<div class="single-item-desc">
-								<p style="text-align: justify;">{{ $product->description }}</p>
-							</div>
-							<div class="space20">&nbsp;</div>
-
 							<p>Size:</p>
 							<div class="single-item-options">
 								<select class="wc-select" name="size" id="size" onchange="validateSelectBox(this)">
@@ -60,8 +55,7 @@
 						</ul>
 
 						<div class="panel" id="tab-description">
-							<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
-							<p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequaturuis autem vel eum iure reprehenderit qui in ea voluptate velit es quam nihil molestiae consequr, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? </p>
+							<p>{{ $product->description }}</p>
 						</div>
 						<div class="panel" id="tab-reviews">
 							<p>No Reviews</p>

@@ -39,7 +39,7 @@
                           @foreach($order as $value)
                           <tr class="gradeX odd" align="center" role="row">
                                   <td class="">{{ $value->id }}</td>
-                                  <td class="">{{ $value->date_order }}</td>
+                                  <td class="">{{ $value->date_order->format('d-m-Y') }}</td>
                                   <td class="">
                                     @if($value->status == 3 )
                                       Đã Hủy

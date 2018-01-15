@@ -4,7 +4,7 @@
             <li>
                 <div class="user-img-div">
                   <a href="{{url('/admin')}}">
-                      <img src="/img/shoes_nike.jpg" class="img-circle" />
+                      <img src="/img/f-fandy-74267292.jpg" class="img-circle" />
                   </a>
                 </div>
 

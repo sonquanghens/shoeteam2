@@ -3,7 +3,7 @@
   <div id="page-inner">
       <div class="row">
           <div class="col-md-12" style=" margin-bottom: 25px;  border-bottom: 2px solid #d2d2d2;">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
               <h1 class="page-head">User <small>list</small></h1>
             </div>
             <div class="col-sm-3" style="margin-top:30px;width: 31%;">
@@ -14,6 +14,7 @@
                   <div class="form-group">
                     <input type="text" value="{{ isset($_GET['search_user']) ? $_GET['search_user'] : '' }}" name="search_user" class="form-control" placeholder="Search">
                     <button type="submit"  class="btn btn-info">sreach</button>
+                    <a href="{{url('/admin/users')}}"  class="btn btn-info">Cancel</a>
                   </div>
                 </form>
             </div>

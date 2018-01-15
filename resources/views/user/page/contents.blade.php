@@ -26,7 +26,7 @@
               </div>
               <div class="row">
                 @foreach($products as $product)
-                <div class="col-sm-3">
+                <div class="col-sm-3" style="margin-bottom:20px;">
                   <div class="single-item">
                     @if($product->promotion_price > 0)
                     <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
@@ -45,7 +45,7 @@
                           <span class="flash-del">{{ number_format($product->unit_price, 0,'','.') }}</span>
                           <span class="flash-sale">{{ number_format($product->promotion_price, 0,'','.')}} VNĐ</span>
                       @else
-                          <span>{{ number_format($product->unit_price, 0,'','.') }}&nbsp; {{ $product->unit }}</span>
+                          <span>{{ number_format($product->unit_price, 0,'','.') }}&nbsp; {{ $product->unit }} VNĐ</span>
                       @endif
 
                       </p>
@@ -91,7 +91,7 @@
               </div>
               <div class="row">
                 @foreach($topproduct as $product)
-                <div class="col-sm-3">
+                <div class="col-sm-3" style="margin-bottom:20px;">
                   <div class="single-item">
                     @if($product->promotion_price > 0)
                       <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>

@@ -11,8 +11,8 @@ class ProductController extends Controller
 {
     public function home()
      {
-       $products = Product::orderBy('id','desc')->skip(0)->take(4)->get();
-       $topproduct = Product::orderBy('count','desc')->skip(0)->take(4)->get();
+       $products = Product::orderBy('id','desc')->skip(0)->take(8)->get();
+       $topproduct = Product::orderBy('count','desc')->skip(0)->take(8)->get();
        return view('user.page.contents', compact('products','topproduct'));
      }
 
