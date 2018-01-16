@@ -78,8 +78,9 @@
                       </div>
                     </div>
                   @endforeach
-                <div class="row">{{ $products->links() }}</div>
+
               </div>
+              <div class="row">{{ $products->links() }}</div>
             </div>
           </div> <!-- .beta-products-list -->
         </div>

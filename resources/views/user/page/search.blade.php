@@ -53,7 +53,7 @@
             <div class="row" id="data">
                 @if(isset($products))
                   @foreach($products as $value)
-                    <div class="col-sm-4" >
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"  style="margin-top: 10px;margin-bottom: 10px;">
                       <div class="single-item">
                         @if($value->promotion_price > 0)
                         <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
@@ -62,7 +62,7 @@
                           <a href="{{ url('/products/').'/'.$value->id }}"><img src="/uploads/{{ $value->image }}" width="270" height="320" alt=""></a>
                         </div>
                         <div class="single-item-body">
-                          <p class="single-item-title">  <a href="{{ url('/products/').'/'.$value->id }}">{{ $value->name_product }} - {{ $value->branch->name }}</a></p>
+                          <p class="single-item-title">  <a href="{{ url('/products/').'/'.$value->id }}">{{ $value->name_product }}</a></p>
                           <p class="single-item-price">
                             @if($value->promotion_price > 0)
                                 <span class="flash-del">{{ number_format($value->unit_price, 0,'','.') }}</span>
@@ -75,11 +75,10 @@
                       </div>
                     </div>
                   @endforeach
-                  <div class="row">{{ $products->links() }}</div>
-                  @endif
-
-                <div class="space50">&nbsp;</div>
+                @endif
               </div>
+              <div class="row">{{ $products->links() }}</div>
+              <div class="space50">&nbsp;</div>
             </div>
           </div> <!-- .beta-products-list -->
         </div>

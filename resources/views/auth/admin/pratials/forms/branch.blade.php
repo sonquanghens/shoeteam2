@@ -28,6 +28,9 @@
   </span>
 @endif
 </div>
+<script type="text/javascript">
+     CKEDITOR.replace( 'description' );
+  </script>
 @if(isset($branch))
 <div>
   <img id="output" src="/uploads/@if(isset($branch)){{$branch->image}} @endif " width="350" height="300" alt="image"/>

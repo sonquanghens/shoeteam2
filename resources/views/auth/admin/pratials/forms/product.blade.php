@@ -25,7 +25,9 @@
     </span>
   @endif
 </div>
-
+<script type="text/javascript">
+     CKEDITOR.replace( 'description' );  
+  </script>
 <div class="form-group">
 {!! Form::label('unit_price', 'Giá bán') !!}
 <div class="form-controls">

@@ -1878,12 +1878,14 @@ margin-bottom:20px
 }
 
 .single-item-title {
-font-size:15px;
+font-size:13px;
+font-weight: bold;
+color: black;
 margin-bottom:5px
 }
 
 .single-item-price {
-font-size:20px;
+font-size:18px;
 color:#000
 }
 

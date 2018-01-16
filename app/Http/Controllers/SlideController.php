@@ -49,7 +49,7 @@ class SlideController extends Controller
       return view('auth.admin.Slide.edit_slied',compact('slide'));
     }
 
-    public function updateSlide(Slide $slide)
+    public function updateSlide(Request $request,Slide $slide)
     {
       $data = $request->all();
       if ($request->hasFile('image'))
