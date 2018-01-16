@@ -47,21 +47,17 @@
                       @else
                           <span>{{ number_format($product->unit_price, 0,'','.') }}&nbsp; {{ $product->unit }} VNĐ</span>
                       @endif
-
                       </p>
                     </a>
                     </div>
-
                   </div>
                 </div>
                 @endforeach
               </div>
+              <div class="space40">&nbsp;</div>
             </div> <!-- .beta-products-list -->
-
           </div>
         </div> <!-- end section with sidebar and main content -->
-
-
       </div> <!-- .main-content -->
     </div> <!-- #content -->
 </div>
@@ -119,7 +115,6 @@
                 @endforeach
               </div>
               <div class="space40">&nbsp;</div>
-
                <!-- .beta-products-list -->
             </div>
           </div>

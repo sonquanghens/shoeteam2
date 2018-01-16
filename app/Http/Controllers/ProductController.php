@@ -36,7 +36,7 @@ class ProductController extends Controller
         $items = Product::join('branchs', 'products.branch_id', '=', 'branchs.id')
                             ->where('branchs.id','=',$product->branch->id)
                             ->where('products.id','<>',$product->id)
-                            ->select('products.*')->inRandomOrder()->take(4)->get();
+                            ->select('products.*')->inRandomOrder()->take(3)->get();
         $topproduct = Product::orderBy('count','desc')->skip(0)->take(4)->get();
         $allproduct = Product::orderBy('id','desc')->skip(0)->take(4)->get();
         return view('user.page.show_product_details',compact('product','items','topproduct','allproduct'));
@@ -83,7 +83,7 @@ class ProductController extends Controller
 
      public function allProduct()
      {
-        $products = Product::orderBy('id','desc')->paginate(15);
+        $products = Product::orderBy('id','desc')->paginate(10);
         return view('auth.admin.product.list_product', compact('products'));
      }
 
