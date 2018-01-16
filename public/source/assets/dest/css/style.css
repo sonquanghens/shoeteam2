@@ -5206,3 +5206,34 @@ border:none;}
 .beta-rotator canvas{width:100%;}
 .beta-rotator {font-family: "Open Sans",sans-serif;}
 .history-slider span {font-family: "Open Sans",sans-serif;}
+
+#page_404{
+    background: url(/img/404_bg.jpg) no-repeat;
+    background-position: right;
+    height: 1273px;
+    position: relative;
+}
+.text_404{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 200px;
+    width: 240px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.text_404 span{
+
+}
+.text_404 a.text{
+    width: 80%;
+    display: inline-block;
+    margin: 15px auto;
+    background: #008CBA;
+    color: #fff;
+    text-align: center;
+    padding: 13px 0px;
+    border-radius: 3px;
+}
