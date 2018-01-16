@@ -39,6 +39,7 @@
               <th>Thành Tiền</th>
               <th>Mã Đơn Hàng</th>
               <th>Tên Sản Phẩm</th>
+              <th>Size</th>
               <th>Trạng Thái</th>
 
             </tr>
@@ -57,8 +58,12 @@
                   @if (empty($product))
                   <td> Sản Phẩm đã xóa hoặc ngừng kinh doanh</td>
                   @else
-                  <td>{{ $product->name_product}}</td>
+                  <td><a href="#" data-toggle="tooltip" data-html="true" title="<image width='185' height='200' src='/uploads/1514981668_1.jpg'/>"> 
+                    {{ $product->name_product}}</a>
+
+                  </td>
                   @endif
+                  <td>{{$item->size }}</td>
                   @if($item->order->status == 1 )
                   <td> Chưa xử lý	</td>
                   @endif
@@ -118,6 +123,9 @@
             <a href="{{ url('carts/manage/'. $item->order_id. '/detail/export')}}" class="btn btn-success"> Export PDF</a>
            {!! Form::close() !!}
      </div>
-
-
+     <script>
+      $(document).ready(function(){
+       $('[data-toggle="tooltip"]').tooltip();
+      });
+     </script>
 @stop

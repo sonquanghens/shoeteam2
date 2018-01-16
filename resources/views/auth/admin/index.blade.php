@@ -113,14 +113,13 @@
             <div class="col-md-12">
                 {!! $chart->html() !!}
             </div>
-
+            <div class="col-md-12" style="text-align:center;">
+              <h2>Thống Kê Đơn Hàng Năm : {{$date_chose}}</h2>
+            </div>
           </div>
           {!! Charts::scripts() !!}
           {!! $chart->script() !!}
       </div>
-
   <!-- /. PAGE INNER  -->
   </div>
-
-
 @stop
