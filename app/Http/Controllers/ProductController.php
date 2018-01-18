@@ -151,8 +151,8 @@ class ProductController extends Controller
                            ->where('products.name_product','like','%'.$request->search_product.'%')
                            ->orWhere('branchs.name','like','%'.$request->search_product.'%')
                            ->select('products.*')
-                           ->paginate(15);
-                          // dd($products);
+                           ->paginate(9);
+                        //  dd($products);
         return view('auth.admin.product.product_search',compact('products'));
      }
 
@@ -165,45 +165,32 @@ class ProductController extends Controller
 
      public function topProduct()
      {
-       $date_chose = Input::get ('date');
-       $products = Product::where('count','>',0)
-                          ->whereYear('created_at', '=', $date_chose)
-                          ->orderBy('count','desc')
-                          ->paginate(15);
-                        //  dd($products);
-       $branch = Branch::all();
-       $name =  [];
-       $total = [];
-       foreach ($branch as $value) {
-         $count =0;
-         $name_branch ="";
-         $product = Product::where('branch_id','=',$value->id)
-                             ->whereYear('created_at', '=', $date_chose)
-                             ->get();
-         foreach ($product as $item) {
-            $count+=$item->count;
-            $name_branch = $item->branch->name;
-         }
-        // dd($product);
-         $total[] = $count;
-        // dd($total);
-         $name[]= $name_branch;
-        // dd($date);
-       }
-       $year = date('Y');
-       $minus1 = date('Y', strtotime('-1 years'));
-       $minus2 = date('Y', strtotime('-2 years'));
-       $minus3 = date('Y', strtotime('-3 years'));
-       $date = array($year =>$year ,$minus1=>$minus1,$minus2=>$minus2,$minus3=>$minus3 );
-       $chart = Charts::create('pie', 'highcharts')
-                            ->title('Thống kê hàng bán được '.$date_chose)
-                            ->labels($name)
-                            ->values($total)
-                            ->dimensions(1000,500)
-                            ->responsive(false);
-       return view('auth.admin.product.list_top_product', compact('products','chart','date'));
-
-     }
+      $products = Product::where('count','>',0)->orderBy('count','desc')->paginate(5);
+      $branch = Branch::all();
+      $date =  [];
+      $total = [];
+      foreach ($branch as $value) {
+        $count =0;
+        $name_branch ="";
+        $product = Product::where('branch_id','=',$value->id)->get();
+        foreach ($product as $item) {
+           $count+=$item->count;
+           $name_branch = $item->branch->name;
+        }
+       // dd($product);
+        $total[] = $count;
+       // dd($total);
+        $date[]= $name_branch;
+       // dd($date);
+      }
+      $chart = Charts::create('pie', 'highcharts')
+                           ->title('Thống kê hàng bán được')
+                           ->labels($date)
+                           ->values($total)
+                           ->dimensions(1000,500)
+                           ->responsive(false);
+      return view('auth.admin.product.list_top_product', compact('products','chart'));
+    }
 
     public function getAllSale()
     {

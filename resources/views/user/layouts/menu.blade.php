@@ -31,6 +31,7 @@
               <div class="media-body">
                 <span class="cart-item-title">{{ $row->name }}</span>
                 <span class="cart-item-options">Số Lượng :{{$row->qty}}</span>
+                <span class="cart-item-options">Size :{{$row->options->size}}</span>
                 <span class="cart-item-amount"><span>{{number_format($row->price, 0,',','.')}} VNĐ</span></span>
               </div>
             </div>

@@ -50,6 +50,7 @@
       		<th style="border: 1px solid #ddd;">Subtotal</th>
       		<th style="border: 1px solid #ddd;">Order Id</th>
       		<th style="border: 1px solid #ddd;">Product Name</th>
+          <th style="border: 1px solid #ddd;">Size</th>
       	</tr>
     	</thead>
 	    <tbody style="padding: 8px;">
@@ -67,6 +68,7 @@
                 @else
                 <td style="border: 1px solid #ddd;text-align:center;">{{ $product->name_product}}</td>
                 @endif
+                <td style="border: 1px solid #ddd;text-align:center;">{{ $item->size}}</td>
           </tr>
           <?php $total+=$item->quantily * $item->unit_price ?>
           @endforeach

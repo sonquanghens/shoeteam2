@@ -25,6 +25,7 @@
                 <th>Thành Tiền</th>
                 <th>Mã Đơn Hàng</th>
                 <th>Tên Sản Phẩm</th>
+                <th>Size</th>
 
               </tr>
               </thead>
@@ -41,8 +42,15 @@
                     @if (empty($product))
                     <td> Sản Phẩm đã xóa hoặc ngừng kinh doanh</td>
                     @else
-                    <td>{{ $product->name_product}}</td>
+                    <td>
+                      <a href="#" data-toggle="tooltip" data-html="true" title="<image width='185' height='200' src='/uploads/{{$product->image}}'/>">
+                      {{ $product->name_product}}
+                    </a>
+                    </td>
                     @endif
+                    <td>
+                      {{ $item->size }}
+                    </td>
                 </tr>
                 <?php $total+=$item->quantily * $item->unit_price ?>
                 @endforeach
@@ -58,4 +66,12 @@
 
 </section>
 
+@stop
+
+@section('script')
+<script>
+ $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+ });
+</script>
 @stop

@@ -36,8 +36,7 @@
   								<div class="media">
   									<img class="pull-left" src="/uploads/{{ $row->options->images }}"  width="80" height="80" alt="">
   									<div class="media-body">
-  										<p class="font-large table-title">{{$row->name }}</p>
-  										<p class="table-option">Color: Red</p>
+  										<p class="font-large table-title">{{$row->name }}</p>  										
   										<p id="result" class="table-option">Size: {{ $row->options->size }}</p>
   									</div>
   								</div>
