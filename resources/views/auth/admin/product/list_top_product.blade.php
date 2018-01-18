@@ -1,19 +1,11 @@
 @extends('auth.admin.layouts.admin_master')
 @section('content')
   <div id="page-inner">
-      <div class="row">
-        <div class="col-md-4" style="margin-top:20px;"></div>
-        <div class="col-md-8" style="margin-top:20px;">
-          {!! Form::open(['url' => '/admin/product/list_top_product','method' => 'get']) !!}
-          {!! Form::select('date',$date,null, ['class' => 'form-control date']) !!}
-          {!! Form::submit('Thống Kê', ['class' => 'btn btn-primary']) !!}
-          {!! Form::close() !!}
-        </div>
-        
-          <div class="col-md-12" style=" margin-bottom: 25px;  border-bottom: 2px solid #d2d2d2;">
-            {!! $chart->html() !!}
-          </div>
-      </div>
+    <div class="row">
+         <div class="col-md-12" style=" margin-bottom: 25px;  border-bottom: 2px solid #d2d2d2;">
+           {!! $chart->html() !!}
+         </div>
+     </div>
       <div class="row">
           <div class="col-md-12">
             <div class="row">
@@ -59,9 +51,8 @@
                             </tbody>
                       </table>
                     </div>
-                    <div class="col-sm-10"></div>
-                    <div class="col-sm-2">{{ $products->links() }}</div>
                   </div>
+                    <div class="col-sm-12">{{ $products->links() }}</div>
                 </div>
               </div>
   </div>

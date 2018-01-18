@@ -71,7 +71,7 @@
 								</div>
 							</div>
 
-							
+
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -86,7 +86,7 @@
 											<img width="25%" src="/uploads/{{$row->options->images}}" alt="" class="pull-left">
 											<div class="media-body">
 												<p class="font-large">{{$row->name}}</p>
-												<span class="color-gray your-order-info">Color: Red</span>
+												<span class="color-gray your-order-info" style="font-weight:bold;">Size : {{$row->options->size}}</span>
 												<span class="color-red your-order-info" style="color: #f90;font-weight:bold;">Đơn Giá: {{number_format($row->price, 0,',','.')}} VNĐ</span>
 												<span class="color-gray your-order-info" style="color: #f90;">Số Lượng: {{$row->qty}}</span>
 											</div>

@@ -58,7 +58,7 @@
                   @if (empty($product))
                   <td> Sản Phẩm đã xóa hoặc ngừng kinh doanh</td>
                   @else
-                  <td><a href="#" data-toggle="tooltip" data-html="true" title="<image width='185' height='200' src='/uploads/1514981668_1.jpg'/>"> 
+                  <td><a href="#" data-toggle="tooltip" data-html="true" title="<image width='185' height='200' src='/uploads/{{$product->image}}'/>">
                     {{ $product->name_product}}</a>
 
                   </td>
@@ -86,7 +86,6 @@
 
      <div class="col-md-3">
            {!! Form::open(['url' => '/admin/order/'.$item->order_id.'/status','method' => 'put']) !!}
-           @if($item->order->status != 2 )
            @if($item->order->status == 1 )
            {!! Form::select('note',
                [
@@ -119,7 +118,6 @@
            @endif
 
            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-           @endif
             <a href="{{ url('carts/manage/'. $item->order_id. '/detail/export')}}" class="btn btn-success"> Export PDF</a>
            {!! Form::close() !!}
      </div>

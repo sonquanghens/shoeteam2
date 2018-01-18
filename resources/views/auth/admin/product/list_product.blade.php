@@ -69,9 +69,8 @@
                             </tbody>
                       </table>
                     </div>
-                    <div class="col-sm-10"></div>
-                    <div class="col-sm-2">{{ $products->links() }}</div>
                   </div>
+                  <div class="col-sm-12">{{ $products->links() }}</div>
                 </div>
               </div>
           </div>

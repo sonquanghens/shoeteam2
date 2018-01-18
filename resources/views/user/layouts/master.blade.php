@@ -63,7 +63,6 @@
     </script>
 
 </body>
-  @yield('script')
     <script>
         function addCart(id)
         {
@@ -78,3 +77,4 @@
             });
         }
   </script>
+  @yield('script')
